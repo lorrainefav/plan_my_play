@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_164554) do
-ActiveRecord::Schema.define(version: 2018_11_20_155918) do
+ActiveRecord::Schema.define(version: 2018_11_20_180154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "availabilities", force: :cascade do |t|
+    t.datetime "begin_at"
+    t.datetime "end_at"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_availabilities_on_user_id"
+  end
 
   create_table "convocations", force: :cascade do |t|
     t.bigint "user_id"
@@ -51,18 +59,10 @@ ActiveRecord::Schema.define(version: 2018_11_20_155918) do
     t.datetime "begin_at"
     t.datetime "end_at"
     t.bigint "user_id"
-    t.integer "match_duration"
+    t.integer "match_duration", default: 90
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tournaments_on_user_id"
-    
-  create_table "availabilities", force: :cascade do |t|
-    t.datetime "begin_at"
-    t.datetime "end_at"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_availabilities_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,14 +85,11 @@ ActiveRecord::Schema.define(version: 2018_11_20_155918) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
+  add_foreign_key "availabilities", "users"
   add_foreign_key "convocations", "matches"
   add_foreign_key "convocations", "users"
   add_foreign_key "matches", "tournaments"
   add_foreign_key "registrations", "tournaments"
   add_foreign_key "registrations", "users"
   add_foreign_key "tournaments", "users"
-
-  add_foreign_key "availabilities", "users"
-
 end
