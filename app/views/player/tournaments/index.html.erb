@@ -2,41 +2,32 @@
 
 
 
-
-
 <div class="main-container">
   <div class="container">
     <div class="row">
       <% @tournaments.each do |tournament| %>
         <div class="col-xs-12 col-sm-4">
-          <div class="card-body">
-            <div class="card-picture">
-              <%=link_to image_tag(toilet.photo.url, width: '100%', class:"card-picture card-link"), toilet_path(toilet) %>
-            </div>
-            <div class="card-likes">
-              <div>
-                <p><%= tournament.name %></p>
-                <p><%= tournament.city %></p>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-          </div>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtj_afZu3Qh52f5mJmGDjpPC0w6DnIUE598E4sUJVlM00uiUcC" class="visible-lg visible-xs loaded" data-original="http://cdn-1.sikana.tv/images/media/cache/col_lg_4/images/tv/pages/about-us/aboutus3-we_product_video.jpg" width="313" height="240">
+          <h3><%= tournament.name %></h3>
+          <p><%= tournament.city %></p>
+          <p>Du <%= tournament.begin_at %> au <%= tournament.end_at %></p>
         </div>
       <% end %>
     </div>
-  </div>
+  </div>s
 </div>
 
 
-<div class="col-md-4 col-sm-4">
 
-            <img src="http://cdn-1.sikana.tv/images/media/cache/col_lg_4/images/tv/pages/about-us/aboutus3-we_product_video.jpg" class="visible-lg visible-xs loaded" data-original="http://cdn-1.sikana.tv/images/media/cache/col_lg_4/images/tv/pages/about-us/aboutus3-we_product_video.jpg" width="313" height="240">
-            <img src="http://cdn-1.sikana.tv/images/media/cache/col_md_4/images/tv/pages/about-us/aboutus3-we_product_video.jpg" class="visible-md loaded" data-original="http://cdn-1.sikana.tv/images/media/cache/col_md_4/images/tv/pages/about-us/aboutus3-we_product_video.jpg" width="280" height="220">
-            <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" class="visible-sm" data-original="http://cdn-1.sikana.tv/images/media/cache/col_sm_4/images/tv/pages/about-us/aboutus3-we_product_video.jpg" width="220" height="180">
-
-
-            <h3>À propos de Sikana</h3>
-            <p>La mission de Sikana est d’inspirer et d'aider chaque individu à mieux vivre et à se mettre au service du bien commun pour la prospérité de tous.</p>
-            <a href="/fr/about-us" class="sbtn sbtn--outline sbtn--big">En savoir plus</a>
+<div class="main-container">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtj_afZu3Qh52f5mJmGDjpPC0w6DnIUE598E4sUJVlM00uiUcC" class="visible-lg visible-xs loaded" data-original="http://cdn-1.sikana.tv/images/media/cache/col_lg_4/images/tv/pages/about-us/aboutus3-we_product_video.jpg" width="313" height="240">
+          <h3> name </h3>
+          <p> city </p>
+          <p>Du lundi au vendredi</p>
         </div>
+    </div>
+  </div>
+</div>
