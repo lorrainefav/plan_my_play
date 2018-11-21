@@ -1,9 +1,9 @@
 class Tournament < ApplicationRecord
   belongs_to :user
   has_many :registrations
-  has_many :matchs
+  has_many :matches
   has_many :users, through: :registrations
-  has_many :convocations, through: :matchs
+  has_many :convocations, through: :matches
 
   validates :name, presence: true
   validates :city, presence: true
