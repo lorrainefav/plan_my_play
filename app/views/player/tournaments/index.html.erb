@@ -1,20 +1,17 @@
 
 
-
-
 <div class="main-container">
   <div class="container">
-    <div class="title-underline">Mes tournois</div>
     <div class="row">
       <% @registrations.each do |registration| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card-body">
-            <div class="card-picture">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtj_afZu3Qh52f5mJmGDjpPC0w6DnIUE598E4sUJVlM00uiUcC" class="pict" data-original="http://cdn-1.sikana.tv/images/media/cache/col_lg_4/images/tv/pages/about-us/aboutus3-we_product_video.jpg" >
+            <div class="card-picture" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtj_afZu3Qh52f5mJmGDjpPC0w6DnIUE598E4sUJVlM00uiUcC');">
+              <h3><%= registration.tournament.name %></h3>
             </div>
             <div class="card-likes">
               <div>
-                <h3><%= registration.tournament.name %></h3>
+
                 <p><%= registration.tournament.city %></p>
                 <p>Du <%= registration.tournament.begin_at %> au <%= registration.tournament.end_at %></p>
               </div>
