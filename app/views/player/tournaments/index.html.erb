@@ -1,33 +1,24 @@
-<h1>TO DO NavBARR </h1>
+
 
 
 
 <div class="main-container">
   <div class="container">
+    <div class="title-underline">Mes tournois</div>
     <div class="row">
       <% @tournaments.each do |tournament| %>
         <div class="col-xs-12 col-sm-4">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtj_afZu3Qh52f5mJmGDjpPC0w6DnIUE598E4sUJVlM00uiUcC" class="visible-lg visible-xs loaded" data-original="http://cdn-1.sikana.tv/images/media/cache/col_lg_4/images/tv/pages/about-us/aboutus3-we_product_video.jpg" width="313" height="240">
+          <div class="card-picture">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtj_afZu3Qh52f5mJmGDjpPC0w6DnIUE598E4sUJVlM00uiUcC" class="pict" data-original="http://cdn-1.sikana.tv/images/media/cache/col_lg_4/images/tv/pages/about-us/aboutus3-we_product_video.jpg" >
+          </div>
           <h3><%= tournament.name %></h3>
           <p><%= tournament.city %></p>
           <p>Du <%= tournament.begin_at %> au <%= tournament.end_at %></p>
         </div>
       <% end %>
     </div>
-  </div>s
-</div>
-
-
-
-<div class="main-container">
-  <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-4">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtj_afZu3Qh52f5mJmGDjpPC0w6DnIUE598E4sUJVlM00uiUcC" class="visible-lg visible-xs loaded" data-original="http://cdn-1.sikana.tv/images/media/cache/col_lg_4/images/tv/pages/about-us/aboutus3-we_product_video.jpg" width="313" height="240">
-          <h3> name </h3>
-          <p> city </p>
-          <p>Du lundi au vendredi</p>
-        </div>
-    </div>
   </div>
 </div>
+
+
+

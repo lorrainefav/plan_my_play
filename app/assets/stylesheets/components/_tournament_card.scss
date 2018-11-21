@@ -1,1 +1,29 @@
-_tournament_card.scss
+main-container {
+  display: flex;
+}
+
+.container {
+    max-width: 1140px;
+    margin-top: 79px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+
+.title-underline {
+    border-bottom: 1px solid #777;
+    padding-bottom: 5px;
+}
+.pict {
+  margin-top: 10px;
+}
+
+.card-picture {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
