@@ -3,8 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  has_many :tournaments
+  has_many :tournaments, foreign_key: :supervisor_id
   has_many :availabilities
   has_many :convocations
   has_many :registrations
