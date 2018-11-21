@@ -1,0 +1,3 @@
+class ConvocationsController < ApplicationController
+
+end
