@@ -1,7 +1,79 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+
+puts "Destroy all"
+Convocation.destroy_all
+Match.destroy_all
+Registration.destroy_all
+Tournament.destroy_all
+User.destroy_all
+
+puts "creating a supervisor"
+supervisor = User.create(
+   email: "supervisor@gmail.com",
+   password: "azerty",
+   password_confirmation: "azerty",
+   supervisor: true,
+   last_name: "Dupont",
+   first_name: "Michel",
+   club: "le Haillan",
+   licence: "1234567 A",
+   gender: "men",
+   ranking: "NC",
+   phone_number: "0607080900"
+)
+
+puts "Creating Tournaments"
+tournoi = Tournament.create(
+  user: supervisor,
+  name: "Tournoi Adulte ASH",
+  city: "Le Haillan",
+  courts_number: 4,
+  begin_at: "10/05/2019",
+  end_at: "30/05/2019"
+  )
+
+puts "Creating Players"
+csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
+filepath    = './db/Joueurs.csv'
+CSV.foreach(filepath, csv_options) do |row|
+  gender = "women"
+  gender = "men" if row['Sexe'] == "H"
+
+  player = User.create(
+   email: row['eMail'],
+   password: "azerty",
+   password_confirmation: "azerty",
+   supervisor: false,
+   last_name: row['Nom'],
+   first_name: row['Prénom'],
+   club: row['Club'],
+   licence: row['Licence'],
+   gender: gender,
+   ranking: row['Classt Simple'],
+   phone_number: row['Tél. Mob.']
+  )
+  inscription = Registration.create(
+    user: player,
+    tournament: tournoi,
+    category: row['Cat. Epr.']
+    )
+  print "-"
+end
+
+puts "Creating matches"
+20.times do
+  Match.create(
+    tournament: tournoi,
+    begin_at: "15/05/2019 15:00")
+end
+
+puts "Creating convocations"
+40.times do
+  Convocation.create(
+    user: User.where("supervisor=false").sample,
+    match: Match.all.sample
+    )
+end
+
+puts "Seeds done!"
+puts "-"*20
