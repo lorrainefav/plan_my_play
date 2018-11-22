@@ -1,5 +1,7 @@
 class Player::ConvocationsController < ApplicationController
+
   before_action :set_convocation, only: [:accept, :refuse]
+
 
   def accept
     @convocation.accepted!

@@ -1,5 +1,5 @@
 class Tournament < ApplicationRecord
-  belongs_to :user
+  belongs_to :supervisor, class_name: 'User'
   has_many :registrations
   has_many :matches
   has_many :users, through: :registrations

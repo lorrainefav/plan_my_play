@@ -13,6 +13,9 @@
 /* Logo */
 .navbar-wagon-brand img {
   height: 50px;
+ width: 65px;
+  height: 65px;
+  border-radius: 65px;
 }
 
 /* User Avatar */
@@ -20,6 +23,7 @@
   height: 35px;
   width: 35px;
   border-radius: 50%;
+  float: right;
 }
 
 /* Right section */
@@ -27,22 +31,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  float: right;
 }
 
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 20px;
+  padding: 50px;
 }
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: black;
   font-size: 14px;
+  float: right;
 }
 .navbar-wagon-link:hover {
   color: #da552f;
   text-decoration: none;
+  float: right;
+  margin-right: 5px;
 }
 
 /* Dropdown menu */
@@ -75,3 +83,5 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+

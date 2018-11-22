@@ -32,7 +32,40 @@ tournoi = Tournament.create(
   end_at: "30/05/2019"
   )
 
+durand = User.create(
+ email: "durand@gmail.com",
+ password: "azerty",
+ password_confirmation: "azerty",
+ supervisor: false,
+ last_name: "Durand",
+ first_name: "Jacques",
+ club: "Bordeaux TC",
+ licence: "9876543 Z",
+ gender: "men",
+ ranking: "30/3",
+ phone_number: "0698765432"
+)
+
+num = 0
+5.times do
+  num += 1
+  tournoi = Tournament.create(
+    user: supervisor,
+    name: "Tournoi #{num}",
+    city: "Ville #{num}",
+    courts_number: 8,
+    begin_at: "01/06/2019",
+    end_at: "15/06/2019")
+
+  inscription = Registration.create(
+    user: durand,
+    tournament: tournoi,
+    category: "Senior"
+  )
+end
+
 puts "Creating Players"
+
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 filepath    = './db/Joueurs.csv'
 CSV.foreach(filepath, csv_options) do |row|
@@ -59,6 +92,7 @@ CSV.foreach(filepath, csv_options) do |row|
     )
   print "-"
 end
+puts ""
 
 puts "Creating matches"
 20.times do
