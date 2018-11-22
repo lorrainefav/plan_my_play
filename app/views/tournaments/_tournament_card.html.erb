@@ -1,0 +1,13 @@
+
+
+<div class="card mb-2" style="width: 18rem;">
+  <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtj_afZu3Qh52f5mJmGDjpPC0w6DnIUE598E4sUJVlM00uiUcC" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= registration.tournament.name %></h5>
+    <p class="card-text"><%= registration.tournament.city %></p>
+    <p class="card-text">Du <%= registration.tournament.begin_at %> au <%= registration.tournament.end_at %></p>
+    <% if current_user.supervisor  %>
+      <button href="#" type="button" class="btn btn-outline-secondary btn-block">Update</button>
+    <% end  %>
+  </div>
+</div>
