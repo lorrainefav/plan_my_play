@@ -8,19 +8,13 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
+      <%= link_to "Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% if current_user.supervisor%>
-      <%= link_to "Home", "tournaments_path", class: "navbar-wagon-item navbar-wagon-link" %>
-        <% if controller.controller_name == "tournaments" && controller.action_name == "show" %>
-          <%= link_to "Joueur", "/player/tournaments", class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "Calendrier", "/player/convocations/:id", class: "navbar-wagon-item navbar-wagon-link" %>
-        <%end%>
-      <%else%>
-
-      <!-- Links when logged in -->
-      <%= link_to "Mes tournois", "/player/tournaments/:id", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Mes convocations", " /player/convocations/:id", class: "navbar-wagon-item navbar-wagon-link" %>
-   <% end %>
-      <!-- Avatar with dropdown menu -->
+        <%= link_to "Tournois", tournaments_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% else %>
+        <%= link_to "Mes tournois", player_tournaments_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Mes convocations", player_availabilities_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag "http://kitt.lewagon.com/placeholder/users/julescarriere", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
@@ -49,16 +43,5 @@
     <% end %>
   </div>
 
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">my tournaments</a></li>
-        <li><a href="#">my status</a></li>
-        <li><a href="#">my matchs</a></li>
-      </ul>
-    </div>
-  </div>
 </div>
 
