@@ -1,5 +1,7 @@
-class TournamentsController < ApplicationController
+class Player::TournamentsController < ApplicationController
   def index
-    @tournaments = Tournament.all
+    @user = current_user
+
+    @registrations = @user.registrations
   end
 end
