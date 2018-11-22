@@ -13,5 +13,11 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
   end
   resources :matches, only: [:update, :destroy]
-  resources :convocations, only: [:update]
+  resources :convocations, only: [] do
+    member do
+      post 'accept'
+      post 'refuse'
+      post 'send'
+    end
+  end
 end

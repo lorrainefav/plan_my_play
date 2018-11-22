@@ -7,7 +7,8 @@
     <p class="card-text"><%= tournament.city %></p>
     <p class="card-text">Du <%= tournament.begin_at.day %>.<%= tournament.begin_at.day %> au <%= tournament.end_at.day %>.<%= tournament.end_at.day %></p>
     <% if current_user.supervisor  %>
-      <button href="#" type="button" class="btn btn-outline-secondary btn-block">Update</button>
+      <%= link_to "Show", tournament_path(tournament), class: "btn btn-outline-secondary btn-block"%>
+      <%= link_to "Update", edit_tournament_path(tournament), class: "btn btn-outline-secondary btn-block"%>
     <% end  %>
   </div>
 </div>
