@@ -1,3 +1,3 @@
-class AvailabilitiesController < ApplicationController
+class Player::AvailabilitiesController < ApplicationController
 
 end

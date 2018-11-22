@@ -1,3 +1,3 @@
-class ConvocationsController < ApplicationController
+class Player::ConvocationsController < ApplicationController
 
 end
