@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="card-columns convoc">
+    <div class="card border-secondary mb-3">
+      <% @convocations.each do |convocation| %>
+        <div class="card-header d-flex justify-content-between">
+          <%= convocation.match.tournament.name %>
+        </div>
+        <div class="card-body text-secondary">
+          <p class="card-text">Match prévu le : <%= convocation.match.begin_at.day %> . <%= convocation.match.begin_at.month %> . <%= convocation.match.begin_at.year %> à : <%= convocation.match.begin_at.hour %> h <%= convocation.match.begin_at.min %></p>
+          <button type="button" class="btn btn-outline-success btn-sm"><%= link_to "Refuse", refuse_player_convocation_path(convocation), method: :post, remote: true %></button>
+          <button type="button" class="btn btn-outline-danger btn-sm"><%= link_to "Accept", accept_player_convocation_path(convocation), method: :post, remote: true %></button>
+          <button type="button" class="btn btn-dark btn-sm"><%= convocation.status %>               <i class="fas fa-check"></i></button>
+        </div>
+    </div>
+    <% end %>
+  </div>
