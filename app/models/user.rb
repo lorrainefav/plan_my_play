@@ -10,7 +10,6 @@ class User < ApplicationRecord
 
   validates :last_name, presence: true
   validates :first_name, presence: true
-  validates :club, presence: true
   validates :licence, uniqueness: true, presence: true, length: { is: 9 }
   validates :gender, presence: true, inclusion: { in: [ "men", "women" ] }
   validates :ranking, presence: true, inclusion: { in: [ "NC", "40", "30/5", "30/4", "30/3", "30/2", "30/1", "30",\
