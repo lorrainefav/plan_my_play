@@ -1,0 +1,10 @@
+<ul>
+  <% @convocations.each do |convocation| %>
+    <li>
+    <%= convocation.id %>
+    <%= link_to "Refuse", refuse_player_convocation_path(convocation), method: :post, remote: true %>
+    <%= link_to "Accept", accept_player_convocation_path(convocation), method: :post, remote: true %>
+    </li>
+    <%= convocation.status %>
+  <% end %>
+</ul>
