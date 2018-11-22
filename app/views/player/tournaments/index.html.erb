@@ -4,7 +4,11 @@
     <div class="row">
       <% @registrations.each do |registration| %>
         <div class="col-xs-12 col-sm-4">
-          <%= render 'tournaments/tournament_card', { registration: registration } %>
+
+
+          <%= render 'tournaments/tournament_card', { tournament: registration.tournament } %>
+
+
         </div>
       <% end %>
     </div>
