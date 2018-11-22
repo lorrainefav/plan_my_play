@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_180154) do
+ActiveRecord::Schema.define(version: 2018_11_21_174753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,11 +58,11 @@ ActiveRecord::Schema.define(version: 2018_11_20_180154) do
     t.integer "courts_number"
     t.datetime "begin_at"
     t.datetime "end_at"
-    t.bigint "user_id"
+    t.bigint "supervisor_id"
     t.integer "match_duration", default: 90
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_tournaments_on_user_id"
+    t.index ["supervisor_id"], name: "index_tournaments_on_supervisor_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,5 +91,5 @@ ActiveRecord::Schema.define(version: 2018_11_20_180154) do
   add_foreign_key "matches", "tournaments"
   add_foreign_key "registrations", "tournaments"
   add_foreign_key "registrations", "users"
-  add_foreign_key "tournaments", "users"
+  add_foreign_key "tournaments", "users", column: "supervisor_id"
 end

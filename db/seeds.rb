@@ -45,23 +45,24 @@ durand = User.create(
  ranking: "30/3",
  phone_number: "0698765432"
 )
-  num = 0
-  5.times do
-    num += 1
-    tournoi = Tournament.create(
-      user: supervisor,
-      name: "Tournoi #{num}",
-      city: "Ville #{num}",
-      courts_number: 8,
-      begin_at: "01/06/2019",
-      end_at: "15/06/2019")
 
-    inscription = Registration.create(
-      user: durand,
-      tournament: tournoi,
-      category: "Senior"
-    )
-  end
+num = 0
+5.times do
+  num += 1
+  tournoi = Tournament.create(
+    user: supervisor,
+    name: "Tournoi #{num}",
+    city: "Ville #{num}",
+    courts_number: 8,
+    begin_at: "01/06/2019",
+    end_at: "15/06/2019")
+
+  inscription = Registration.create(
+    user: durand,
+    tournament: tournoi,
+    category: "Senior"
+  )
+end
 
 puts "Creating Players"
 
@@ -92,6 +93,7 @@ CSV.foreach(filepath, csv_options) do |row|
   print "-"
 end
 puts ""
+
 puts "Creating matches"
 20.times do
   Match.create(
