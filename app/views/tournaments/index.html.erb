@@ -1,0 +1,13 @@
+    <div class="container py-2">
+    <div class="row">
+      <% @tournaments.each do |tournament| %>
+        <div class="col-xs-12 col-sm-4">
+
+
+          <%= render 'tournaments/tournament_card', { tournament: tournament } %>
+
+
+        </div>
+      <% end %>
+    </div>
+  </div>
