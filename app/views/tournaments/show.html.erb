@@ -1,9 +1,17 @@
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link active" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Joueurs",  tournament_users_path(@tournament), class:"nav-link" %>
+    </li>
+  </ul>
+</div>
 <div class="container" style="width: 600px;">
-  <div class="row">
-    <h2> <%= @tournament.name %> </h2>
-  </div>
-    <h4>Liste des matchs</h4>
-      <% @tournament.matches.each do |match| %>
-      <%= render "shared/card_match", match: match %>
-      <% end %>
+  <h2><%= @tournament.name %></h2>
+   <h4>Liste des matchs</h4>
+   <% @tournament.matches.each do |match| %>
+    <%= render "shared/card_match", match: match %>
+   <% end %>
 </div>
