@@ -1,40 +1,43 @@
-<div class="container-fluid">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link active" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Joueurs",  tournament_users_path(@tournament), class:"nav-link" %>
-    </li>
-  </ul>
-<div class="row">
-  <%= link_to "Send all convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-primary" %>
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link active" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Joueurs",  tournament_users_path(@tournament), class:"nav-link" %>
+      </li>
+    </ul>
+  </div>
 </div>
-<div class="row">
-  <div class="col-sm-3">
-  </div>
-  <div class="col-sm-6">
-    <h2><%= @tournament.name %></h2>
-    <h4>Liste des matchs</h4>
-    <% @tournament.matches.order(created_at: :desc).each do |match| %>
-      <%= render "shared/card_match", match: match %>
-    <% end %>
-  </div>
-  <div class="col-sm-3">
-    <h4>Création de match</h4>
-    <%= simple_form_for([@tournament, @match]) do |f| %>
-      <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-        <%= convocation.input :user_id, collection: @tournament.users %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6">
+      <h2><%= @tournament.name %></h2>
+      <%= link_to "Send all convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-primary" %>
+      <h4>Liste des matchs</h4>
+      <% @tournament.matches.order(created_at: :desc).each do |match| %>
+        <%= render "shared/card_match", match: match %>
       <% end %>
-      <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-        <%= convocation.input :user_id, collection: @tournament.users %>
+    </div>
+    <div class="col-sm-3">
+      <h4>Création de match</h4>
+      <%= simple_form_for([@tournament, @match]) do |f| %>
+        <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
+          <%= convocation.input :user_id, collection: @tournament.users %>
+        <% end %>
+        <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
+          <%= convocation.input :user_id, collection: @tournament.users %>
+        <% end %>
+        <div class="form-inputs">
+          <%= f.input :begin_at %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Create" %>
+        </div>
       <% end %>
-      <div class="form-inputs">
-        <%= f.input :begin_at %>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit, "Create" %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
