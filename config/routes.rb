@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   end
 
   resources :tournaments, only: [:index, :show, :update] do
+    member do
+      post "convocations/grouped_send", to: "convocations#grouped_send"
+    end
     resources :matches, only: [:index, :create]
     resources :users, only: [:index]
   end
@@ -22,7 +25,7 @@ Rails.application.routes.draw do
     member do
       post 'accept'
       post 'refuse'
-      post 'send'
+      # post 'send'
     end
   end
 end
