@@ -11,12 +11,12 @@
 
 
 
- <div class="container py-2">
+ <div class="container py-2" style="width: 800px;">
   <h2 ><%= @tournament.name %></h2>
   <h4>Liste des joueurs</h4>
     <ul>
       <% @users.each do |user| %>
-         <li><%= user.first_name %></li>
+      <%= render "shared/player_card", user: user %>
       <% end %>
     </ul>
   </div>
