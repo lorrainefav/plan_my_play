@@ -23,11 +23,20 @@ supervisor = User.create(
 )
 
 puts "Creating Tournaments"
-tournoi = Tournament.create(
+tournoi1 = Tournament.create(
   supervisor: supervisor,
   name: "Tournoi Adulte ASH",
   city: "Le Haillan",
   courts_number: 4,
+  begin_at: "10/05/2019",
+  end_at: "30/05/2019"
+  )
+
+tournoi2 = Tournament.create(
+  supervisor: supervisor,
+  name: "Tournoi Senior",
+  city: "Le Bouscat",
+  courts_number: 8,
   begin_at: "10/05/2019",
   end_at: "30/05/2019"
   )
@@ -46,23 +55,32 @@ durand = User.create(
  phone_number: "0698765432"
 )
 
-num = 0
-5.times do
-  num += 1
-  tournoi = Tournament.create(
-    supervisor: supervisor,
-    name: "Tournoi #{num}",
-    city: "Ville #{num}",
-    courts_number: 8,
-    begin_at: "01/06/2019",
-    end_at: "15/06/2019")
 
-  inscription = Registration.create(
-    user: durand,
-    tournament: tournoi,
-    category: "Senior"
-  )
-end
+inscription1 = Registration.create(
+  user: durand,
+  tournament: tournoi1,
+  category: "Senior"
+)
+
+inscription2 = Registration.create(
+  user: durand,
+  tournament: tournoi2,
+  category: "Senior"
+)
+
+match = Match.create(
+  tournament: tournoi1,
+  begin_at: "15/05/2019 15:00")
+Convocation.create(
+  user: durand,
+  match: match,
+  status: 'pending'
+)
+Convocation.create(
+  user: User.where("supervisor=false").sample,
+  match: match,
+  status: 'pending'
+)
 
 puts "Creating Players"
 
@@ -87,7 +105,7 @@ CSV.foreach(filepath, csv_options) do |row|
   )
   inscription = Registration.create(
     user: player,
-    tournament: tournoi,
+    tournament: tournoi1,
     category: row['Cat. Epr.']
     )
   print "-"
@@ -95,19 +113,18 @@ end
 puts ""
 
 puts "Creating matches"
-20.times do
-  Match.create(
-    tournament: tournoi,
+5.times do
+  match = Match.create(
+    tournament: tournoi1,
     begin_at: "15/05/2019 15:00")
-end
-
-puts "Creating convocations"
-40.times do
   Convocation.create(
     user: User.where("supervisor=false").sample,
-    match: Match.all.sample
-    )
+    match: match
+  )
+  Convocation.create(
+    user: User.where("supervisor=false").sample,
+    match: match
+  )
 end
-
 puts "Seeds done!"
 puts "-"*20
