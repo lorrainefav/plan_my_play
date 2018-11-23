@@ -7,7 +7,11 @@ class TournamentsController < ApplicationController
 
   def show
    @tournament = Tournament.find(params[:id])
+   @match = Match.new
+   @convocation = Convocation.new
   end
 
+  def update
+  end
 
 end

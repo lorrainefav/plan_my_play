@@ -33,7 +33,7 @@ tournoi = Tournament.create(
   )
 
 durand = User.create(
- email: "durand@gmail.com",
+ email: "player@gmail.com",
  password: "azerty",
  password_confirmation: "azerty",
  supervisor: false,

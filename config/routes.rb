@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :convocations, only: [:update]
   end
 
-  resources :tournaments, only: [:index, :show] do
+  resources :tournaments, only: [:index, :show, :update] do
     resources :matches, only: [:index, :create]
     resources :users, only: [:index]
   end
