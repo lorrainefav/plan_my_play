@@ -1,0 +1,26 @@
+<div class="card border-secondary mb-3">
+  <div class="card-header d-flex justify-content-between">
+    <%= match.begin_at %>
+  </div>
+  <% match.convocations.each do |convocation| %>
+    <div class="card-body text-secondary">
+        <p class="card-text">
+        <%= convocation.user.first_name %>
+        <%= convocation.user.last_name %>
+        <%= convocation.user.club %>
+        <%= convocation.user.ranking %>
+        <%= convocation.status %></p>
+    </div>
+  <% end %>
+  <div class="card-footer cm">
+  <%= simple_form_for([match]) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :begin_at %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Update", method: :patch, class: "btn btn-success"  %>
+      <%= link_to "Delete", match_path(match), method: :delete, class: 'btn btn-secondary'%>
+    </div>
+  <% end %>
+  </div>
+</div>
