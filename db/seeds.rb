@@ -24,7 +24,7 @@ supervisor = User.create(
 
 puts "Creating Tournaments"
 tournoi = Tournament.create(
-  user: supervisor,
+  supervisor: supervisor,
   name: "Tournoi Adulte ASH",
   city: "Le Haillan",
   courts_number: 4,
@@ -33,7 +33,7 @@ tournoi = Tournament.create(
   )
 
 durand = User.create(
- email: "durand@gmail.com",
+ email: "player@gmail.com",
  password: "azerty",
  password_confirmation: "azerty",
  supervisor: false,
@@ -50,7 +50,7 @@ num = 0
 5.times do
   num += 1
   tournoi = Tournament.create(
-    user: supervisor,
+    supervisor: supervisor,
     name: "Tournoi #{num}",
     city: "Ville #{num}",
     courts_number: 8,
