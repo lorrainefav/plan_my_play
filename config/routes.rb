@@ -13,9 +13,16 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tournaments, only: [:index, :show] do
+  resources :tournaments, only: [:index, :show, :update] do
     resources :matches, only: [:index, :create]
     resources :users, only: [:index]
   end
   resources :matches, only: [:update, :destroy]
+  resources :convocations, only: [] do
+    member do
+      post 'accept'
+      post 'refuse'
+      post 'send'
+    end
+  end
 end
