@@ -1,0 +1,9 @@
+<div class="container py-2">
+    <div class="row">
+      <% @users.each do |user| %>
+        <div class="col-xs-12 col-sm-4">
+        <%= user.name %>
+      <%end%>
+        </div>
+    </div>
+</div>
