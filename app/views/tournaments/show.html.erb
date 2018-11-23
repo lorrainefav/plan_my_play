@@ -1,49 +1,40 @@
-<div class="container">
-  <div class="row">
-    <h2> <%= @tournament.name %> </h2>
+<div class="container-fluid">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link active" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Joueurs",  tournament_users_path(@tournament), class:"nav-link" %>
+    </li>
+  </ul>
+<div class="row">
+  <%= link_to "Send all convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-primary" %>
+</div>
+<div class="row">
+  <div class="col-sm-3">
   </div>
-  <div class="row">
-    <div class="col-md-8">
-      <h4>Liste des matchs</h4>
-      <ul>
-        <% @tournament.matches.each do |match| %>
-          <li>
-            <%= match.begin_at %>
-            <ol>
-              <% match.convocations.each do |convocation| %>
-              <li>
-                <%= convocation.user.first_name %>
-                <%= convocation.user.last_name %>
-                <%= convocation.user.club %>
-                <%= convocation.user.ranking %>
-                <%= convocation.status %>
-              </li>
-              <% end %>
-            </ol>
-            <%= simple_form_for([match]) do |f| %>
-              <div class="form-inputs">
-                <%= f.input :begin_at %>
-              </div>
-              <div class="form-actions">
-                <%= f.button :submit, "Update", method: :patch, class: "btn btn-primary"  %>
-              </div>
-            <% end %>
-            <%= link_to "Delete", match_path(match), method: :delete, class: 'btn btn-primary'%>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="col-md-4">
-      <h4>Formulaire de création de match</h4>
-      <%= simple_form_for([@tournament, @match]) do |f| %>
-        <div class="form-inputs">
-          <%= f.input :begin_at %>
-        </div>
-        <div class="form-actions">
-          <%= f.button :submit, "Create" %>
-        </div>
+  <div class="col-sm-6">
+    <h2><%= @tournament.name %></h2>
+    <h4>Liste des matchs</h4>
+    <% @tournament.matches.order(created_at: :desc).each do |match| %>
+      <%= render "shared/card_match", match: match %>
+    <% end %>
+  </div>
+  <div class="col-sm-3">
+    <h4>Création de match</h4>
+    <%= simple_form_for([@tournament, @match]) do |f| %>
+      <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
+        <%= convocation.input :user_id, collection: @tournament.users %>
       <% end %>
-
-    </div>
+      <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
+        <%= convocation.input :user_id, collection: @tournament.users %>
+      <% end %>
+      <div class="form-inputs">
+        <%= f.input :begin_at %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Create" %>
+      </div>
+    <% end %>
   </div>
 </div>

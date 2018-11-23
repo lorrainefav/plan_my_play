@@ -10,11 +10,13 @@ class ConvocationsController < ApplicationController
   end
 
   def send
-    @convocation.sent!
+    @convocation.pending!
   end
 
   def grouped_send
-
+    @tournament = Tournament.find(params[:id])
+    @tournament.send_convocations
+    redirect_to @tournament
   end
 
 private

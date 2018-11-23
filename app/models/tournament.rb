@@ -10,4 +10,10 @@ class Tournament < ApplicationRecord
   validates :courts_number, numericality: { only_integer: true }
   validates :begin_at, presence: true
   validates :end_at, presence: true
+
+  def send_convocations
+    self.convocations.each do |convocation|
+      convocation.pending! if convocation.to_be_sent?
+    end
+  end
 end

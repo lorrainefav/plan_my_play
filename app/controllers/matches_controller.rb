@@ -5,14 +5,19 @@ class MatchesController < ApplicationController
   end
 
   def create
-    @match = Match.new(match_params)
-    @convocation = Convocation.new(convocation_params)
+    # byebug
+    @tournament = Tournament.find(params[:tournament_id])
+    @match = @tournament.matches.new(match_params)
 
+    if @match.save
+      redirect_to @tournament
+    else
+      render 'tournaments/show'
+    end
   end
 
   def update
-    # byebug
-    @match.save(match_params)
+    @match.update(match_params)
     redirect_to tournament_path(@match.tournament)
   end
 
@@ -28,7 +33,7 @@ class MatchesController < ApplicationController
   end
 
   def match_params
-    params.require(:match).permit(:begin_at)
+    params.require(:match).permit(:begin_at, convocations_attributes: [:user_id])
   end
 
   def convocation_params
