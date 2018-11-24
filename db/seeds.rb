@@ -100,13 +100,13 @@ CSV.foreach(filepath, csv_options) do |row|
    club: row['Club'],
    licence: row['Licence'],
    gender: gender,
-   ranking: row['Classt Simple'],
    phone_number: row['Tél. Mob.']
   )
   inscription = Registration.create(
     user: player,
     tournament: tournoi1,
     category: row['Cat. Epr.']
+    ranking: row['Classt Simple'],
     )
   print "-"
 end
