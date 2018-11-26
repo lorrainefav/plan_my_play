@@ -63,21 +63,23 @@ inscription1 = Registration.create(
 )
 
 inscription2 = Registration.create(
-  user: durand,
-  tournament: tournoi2,
+  user: User.where("supervisor=false").sample,
+  tournament: tournoi1,
   category: "Senior"
 )
 
 match = Match.create(
   tournament: tournoi1,
-  begin_at: "15/05/2019 15:00")
+  begin_at: "15/05/2019 15:00"
+  )
+
 Convocation.create(
-  user: durand,
+  registration: inscription1,
   match: match,
   status: 'pending'
 )
 Convocation.create(
-  user: User.where("supervisor=false").sample,
+  registration: inscription2,
   match: match,
   status: 'pending'
 )
@@ -105,8 +107,8 @@ CSV.foreach(filepath, csv_options) do |row|
   inscription = Registration.create(
     user: player,
     tournament: tournoi1,
-    category: row['Cat. Epr.']
-    ranking: row['Classt Simple'],
+    category: row['Cat. Epr.'],
+    # ranking: row['Classt Simple']
     )
   print "-"
 end
@@ -116,14 +118,29 @@ puts "Creating matches"
 5.times do
   match = Match.create(
     tournament: tournoi1,
-    begin_at: "15/05/2019 15:00")
-  Convocation.create(
+    begin_at: "15/05/2019 15:00"
+    )
+
+  inscription1 = Registration.create(
     user: User.where("supervisor=false").sample,
-    match: match
+    tournament: tournoi1,
+    category: "Senior"
+  )
+
+  inscription2 = Registration.create(
+    user: User.where("supervisor=false").sample,
+    tournament: tournoi1,
+    category: "Senior"
   )
   Convocation.create(
-    user: User.where("supervisor=false").sample,
-    match: match
+  registration: inscription1,
+  match: match,
+  status: 'pending'
+  )
+  Convocation.create(
+    registration: inscription2,
+    match: match,
+    status: 'pending'
   )
 end
 puts "Seeds done!"

@@ -2,6 +2,7 @@ class RegistrationsController < ApplicationController
   before_action :destroy, only: [:update, :destroy]
 
   def index
+    byebug
     @tournament = Tournament.find(params[:id])
     @registrations = @tournament.registrations
     @users = @tournament.users

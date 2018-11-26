@@ -2,6 +2,10 @@ class Player::ConvocationsController < ApplicationController
 
   before_action :set_convocation, only: [:accept, :refuse]
 
+  def index
+    @user = current_user
+    @convocations = @user.convocations
+  end
 
   def accept
     @convocation.accepted!

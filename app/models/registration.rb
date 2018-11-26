@@ -4,8 +4,17 @@ class Registration < ApplicationRecord
   "15/5", "15/4", "15/3", "15/2", "15/1", "15", "5/6", "4/6", "3/6", "2/6", "1/6", "0", "-2/6", "-4/6", "-15", "TOP100" ]
   belongs_to :user
   belongs_to :tournament
+  has_many :convocations
   validates :user_id, presence: true
   validates :tournament_id, presence: true
+<<<<<<< HEAD
   validates :category, presence: true, inclusion: { in: CATEGORIES }
   validates :registration_ranking, inclusion: { in: RANKING }
+=======
+  validates :category, presence: true, inclusion: { in: ["Senior", "35", "45", "60"] }
+
+  def to_s
+    user
+  end
+>>>>>>> master
 end

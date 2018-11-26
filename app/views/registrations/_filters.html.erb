@@ -4,6 +4,6 @@
   <%= form.input :gender , as: :radio_buttons, collection: User::GENDERS %>
   <%= form.input :registration_ranking, collection: Registration::RANKING  %>
 
-  <%= form.submit "FILTRER" %>
+  <%= form.submit "FILTRER", tournaments_path, method: :get %>
 <% end %>
 

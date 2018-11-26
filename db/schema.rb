@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_11_26_114133) do
+=======
+ActiveRecord::Schema.define(version: 2018_11_26_142052) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +29,13 @@ ActiveRecord::Schema.define(version: 2018_11_26_114133) do
   end
 
   create_table "convocations", force: :cascade do |t|
-    t.bigint "user_id"
     t.bigint "match_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "registration_id"
     t.index ["match_id"], name: "index_convocations_on_match_id"
-    t.index ["user_id"], name: "index_convocations_on_user_id"
+    t.index ["registration_id"], name: "index_convocations_on_registration_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -88,7 +92,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_114133) do
 
   add_foreign_key "availabilities", "users"
   add_foreign_key "convocations", "matches"
-  add_foreign_key "convocations", "users"
+  add_foreign_key "convocations", "registrations"
   add_foreign_key "matches", "tournaments"
   add_foreign_key "registrations", "tournaments"
   add_foreign_key "registrations", "users"
