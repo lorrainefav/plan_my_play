@@ -10,7 +10,7 @@
       <% end %>
   </div>
   <div class="card-body text-secondary">
-    <p class="card-text">le : <%= convocation.match.begin_at.strftime('%a %d %b %Y') %> à :  <%= convocation.match.begin_at.strftime('%I:%M:%S %p') %> </p>
+    <p class="card-text">le : <%= convocation.match.begin_at.strftime('%a %d %b %Y') %> à : <%= convocation.match.begin_at.strftime('%I:%M:%S %p') %> </p>
     </div>
     <div class="card-footer d-flex justify-content-around">
       <button type="button" class="btn btn-danger btn-sm"><%= link_to "Refusez", refuse_player_convocation_path(convocation), method: :post, remote: true %></button>
