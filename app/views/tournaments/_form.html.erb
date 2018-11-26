@@ -1,10 +1,11 @@
 <div class="container">
   <%= simple_form_for @tournament do |form|%>
     <%= form.input :name %>
-    <%= form.input :city %>
-    <%= form.input :courts_number%>
-    <%= form.input :begin_at %>
-    <%= form.input :end_at %>
+    <%= form.input :city, id: "city_form"%>
+    <%= form.input :courts_number %>
+    <%= form.input :begin_at, input_html: { id:'start_date' }, as: :string %>
+    <%= form.input :end_at, input_html: { id:'end_date' }, as: :string %>
     <%= form.submit %>
-  <% end %>
+    <% end %>
 </div>
+
