@@ -3,4 +3,5 @@ class UsersController < ApplicationController
     @tournament = Tournament.find(params[:tournament_id])
     @users = @tournament.users.all
   end
+
 end
