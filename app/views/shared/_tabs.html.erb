@@ -1,0 +1,19 @@
+<div class="navbar-wagon">
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <% if user_signed_in? %>
+      <% if current_user.supervisor %>
+
+        <%= link_to "Tournois", tournaments_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% else %>
+        <%= link_to "Mes disponibilités", player_tournaments_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Mes convocations", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
+
+    <% else %>
+      <h1>Mettre en transparence</h1>
+    <% end %>
+  </div>
+
+</div>
+

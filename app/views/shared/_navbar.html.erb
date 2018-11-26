@@ -1,23 +1,35 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <% if user_signed_in? %>
+    <% if current_user.supervisor %>
+      <%= link_to tournaments_path, class: "navbar-wagon-brand navbar-wagon-item navbar-wagon-link" do %>
+      <%= image_tag "https://s1.qwant.com/thumbr/0x380/9/9/55f7baade4fc7b73e94047a5ee1fc5cb2d52a572b2df74128ba5071763b542/tennis-ball-clipart-red-11.png?u=http%3A%2F%2Fmoziru.com%2Fimages%2Ftennis-ball-clipart-red-11.png&q=0&b=1&p=0&a=1", height: 50 %>
+      <% end %>
+    <% else %>
+      <%= link_to player_tournaments_path, class: "navbar-wagon-brand navbar-wagon-item navbar-wagon-link" do %>
+      <%= image_tag "https://s1.qwant.com/thumbr/0x380/9/9/55f7baade4fc7b73e94047a5ee1fc5cb2d52a572b2df74128ba5071763b542/tennis-ball-clipart-red-11.png?u=http%3A%2F%2Fmoziru.com%2Fimages%2Ftennis-ball-clipart-red-11.png&q=0&b=1&p=0&a=1", height: 50 %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "https://s1.qwant.com/thumbr/0x380/9/9/55f7baade4fc7b73e94047a5ee1fc5cb2d52a572b2df74128ba5071763b542/tennis-ball-clipart-red-11.png?u=http%3A%2F%2Fmoziru.com%2Fimages%2Ftennis-ball-clipart-red-11.png&q=0&b=1&p=0&a=1", height: 50 %>
+    <% end %>
   <% end %>
+
+
+  <!-- Title -->
+  <div class="navbar-wagon-center ">
+    <h3> Plan my play</h3>
+  </div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <% if user_signed_in? %>
-      <%= link_to "Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <% if current_user.supervisor%>
-        <%= link_to "Tournois", tournaments_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <% else %>
-        <%= link_to "Mes tournois", player_tournaments_path, class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Mes convocations", player_availabilities_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <% end %>
-      <div class="navbar-wagon-item">
+    <div class="navbar-wagon-item">
+      <% if user_signed_in? %>
         <div class="dropdown">
-          <%= image_tag "logo123.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <p class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+            <%= current_user.first_name%>
+          </p>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
@@ -36,12 +48,23 @@
             </li>
           </ul>
         </div>
-      </div>
-    <% else %>
-      <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% end %>
+      <% else %>
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
+    </div>
   </div>
-
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
