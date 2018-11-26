@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :player do
     resources :tournaments, only: :index
     resources :availabilities, only: [:index]
-    resources :convocations, only: [] do
+    resources :convocations, only: [:index] do
       member do
         post 'refuse'
         post 'accept'
@@ -13,19 +13,21 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tournaments, only: [:index, :show, :update] do
+  resources :tournaments, only: [:index, :show, :new, :create, :edit, :update] do
     member do
       post "convocations/grouped_send", to: "convocations#grouped_send"
     end
     resources :matches, only: [:index, :create]
     resources :users, only: [:index]
+    resources :registrations, only: [:new, :create]
   end
+  resources :registrations, only: [:edit, :update, :destroy]
   resources :matches, only: [:update, :destroy]
   resources :convocations, only: [] do
     member do
       post 'accept'
       post 'refuse'
-      # post 'send'
+      post 'unique_send'
     end
   end
 end

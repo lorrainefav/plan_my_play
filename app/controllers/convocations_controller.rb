@@ -9,9 +9,9 @@ class ConvocationsController < ApplicationController
     @convocation.refused!
   end
 
-  # def send_convocation
-  #   @convocation.pending!
-  # end
+  def unique_send
+    @convocation.pending!
+  end
 
   def grouped_send
     @tournament = Tournament.find(params[:id])

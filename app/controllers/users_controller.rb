@@ -10,4 +10,5 @@ class UsersController < ApplicationController
     @users = @tournament.users.all
 >>>>>>> 699bb89050303b18d3c9cc39552ac1445ebbbda9
   end
+
 end
