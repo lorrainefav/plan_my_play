@@ -1,35 +1,36 @@
-<div class="row">
-    <div class="col-sm-9" style="padding-left: 20px;">
-      <div class="row">
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-          <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link active" %>
-          </li>
-          <li class="nav-item">
-          <%= link_to "Joueurs",  tournament_users_path(@tournament), class:"nav-link" %>
-          </li>
-        </ul>
-      </div>
-      <div class="row">
-        <div class="col-sm-3 court">
-          <% @tournament.matches.order(created_at: :desc).each do |match| %>
-            <%= render "shared/card_match", match: match %>
-          <% end %>
-        </div>
+    <div class="row">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+        <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to "Joueurs",  tournament_users_path(@tournament), class:"nav-link" %>
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="container" style="text-align: center;">
+      <h1><%= Date.today %></h1>
       </div>
     </div>
+    <div class="row">
+      <div class="col sm-9 court">
+        <% @tournament.matches.order(created_at: :desc).each do |match| %>
+          <%= render "shared/card_match", match: match %>
+        <% end %>
+      </div>
+
     <div class="col-sm-3">
       <h2><%= @tournament.name %></h2>
-        <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success btn-sm" %>
-      <button type="button" class="btn btn-outline-dark btn-sm" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_match">
-        Créations de matchs
-      </button>
-      <% @tournament.matches.order(created_at: :desc).each do |match| %>
-        <%= render "shared/card_match", match: match %>
-      <% end %>
+          <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success btn-sm" %>
+        <button type="button" class="btn btn-outline-dark btn-sm" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_match">
+          Créations de matchs
+        </button>
+        <% @tournament.matches.order(created_at: :desc).each do |match| %>
+          <%= render "shared/card_match", match: match %>
+        <% end %>
+      </div>
     </div>
-</div>
-
 <!-- Modal -->
 <div class="modal fade" id="create_match" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
