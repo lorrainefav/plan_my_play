@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :player do
     resources :tournaments, only: :index
     resources :availabilities, only: [:index]
-    resources :convocations, only: [] do
+    resources :convocations, only: [:index] do
       member do
         post 'refuse'
         post 'accept'
