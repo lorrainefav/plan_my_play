@@ -1,3 +1,15 @@
 .card-body.text-secondary {
   padding: 8px
 }
+.card.mb-3 {
+  display: inline-flex;
+  width: 300px;
+}
+.card.mb-3.court {
+  display: inline-flex;
+}
+.card.col-sm-10 {
+  display: grid;
+  grid-row: auto;
+  grid-column: auto;
+}
