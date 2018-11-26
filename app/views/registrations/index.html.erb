@@ -1,0 +1,32 @@
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Joueurs",  registrations_path(@tournament), class:"nav-link active" %>
+    </li>
+  </ul>
+</div>
+
+
+  <div class="container-fluid py-2">
+    <h2 class='text-center'><%= @tournament.name %></h2>
+    <div class="row">
+      <div class="col-md-2">
+        <h3>Filtres</h3>
+        <%= render 'filters', tournament: @tournament %>
+      </div>
+      <div class="col-md-8">
+      <h4>Liste des joueurs</h4>
+        <ul>
+          <% @registrations.each do |registration| %>
+            <%= render "shared/player_card", registration: registration %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <%= render 'shared/match_form' %>
+      </div>
+    </div>
+  </div>

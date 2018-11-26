@@ -1,0 +1,9 @@
+<%= simple_form_for :search, url: registrations_path, method: :get do |form| %>
+  <%#= form.input :user %>
+  <%= form.input :category, collection: Registration::CATEGORIES %>
+  <%= form.input :gender , as: :radio_buttons, collection: User::GENDERS %>
+  <%= form.input :registration_ranking, collection: Registration::RANKING  %>
+
+  <%= form.submit "FILTRER" %>
+<% end %>
+

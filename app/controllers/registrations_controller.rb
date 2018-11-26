@@ -1,6 +1,13 @@
 class RegistrationsController < ApplicationController
   before_action :destroy, only: [:update, :destroy]
 
+  def index
+    @tournament = Tournament.find(params[:id])
+    @registrations = @tournament.registrations
+    @users = @tournament.users
+    @match = Match.new
+  end
+
   def new
     @user = User.new
     @registration = Registration.new
@@ -17,6 +24,10 @@ class RegistrationsController < ApplicationController
 
   def destroy
     @registration.destroy
+  end
+
+  def filter
+
   end
 
   private
