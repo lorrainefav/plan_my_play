@@ -2,11 +2,19 @@ class RegistrationsController < ApplicationController
   before_action :destroy, only: [:update, :destroy]
 
   def index
-    byebug
+    # byebug
     @tournament = Tournament.find(params[:id])
-    @registrations = @tournament.registrations
-    @users = @tournament.users
     @match = Match.new
+      @users = @tournament.users
+
+    if params[:search].present?
+      sql_query = "category: params[:search][:category] \
+      AND gender: params[:search][:gender] \
+      AND ranking: params[:search][:registration_ranking]"
+      @registrations = @tournament.registrations.joins(:users).where(sql_query, search: params[:search])
+    else
+      @registrations = @tournament.registrations
+    end
   end
 
   def new

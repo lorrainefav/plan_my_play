@@ -7,7 +7,7 @@ Registration.destroy_all
 Tournament.destroy_all
 User.destroy_all
 
-puts "creating a supervisor"
+puts "Creating a supervisor"
 supervisor = User.create(
    email: "supervisor@gmail.com",
    password: "azerty",
@@ -41,6 +41,7 @@ tournoi2 = Tournament.create(
   end_at: "30/05/2019"
   )
 
+puts "Creating the player"
 durand = User.create(
  email: "player@gmail.com",
  password: "azerty",
@@ -55,7 +56,6 @@ durand = User.create(
  phone_number: "0698765432"
 )
 
-
 inscription1 = Registration.create(
   user: durand,
   tournament: tournoi1,
@@ -63,28 +63,13 @@ inscription1 = Registration.create(
 )
 
 inscription2 = Registration.create(
-  user: User.where("supervisor=false").sample,
-  tournament: tournoi1,
-  category: "Senior"
+  user: durand,
+  tournament: tournoi2,
+  category: "35"
 )
 
-match = Match.create(
-  tournament: tournoi1,
-  begin_at: "15/05/2019 15:00"
-  )
 
-Convocation.create(
-  registration: inscription1,
-  match: match,
-  status: 'pending'
-)
-Convocation.create(
-  registration: inscription2,
-  match: match,
-  status: 'pending'
-)
-
-puts "Creating Players"
+puts "Implementing Tournoi ASH"
 
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 filepath    = './db/Joueurs.csv'
@@ -102,43 +87,31 @@ CSV.foreach(filepath, csv_options) do |row|
    club: row['Club'],
    licence: row['Licence'],
    gender: gender,
-   phone_number: row['Tél. Mob.']
+   phone_number: row['Tél. Mob.'],
+   ranking: row['Classt Simple']
   )
   inscription = Registration.create(
     user: player,
     tournament: tournoi1,
     category: row['Cat. Epr.'],
-    # ranking: row['Classt Simple']
     )
   print "-"
 end
 puts ""
 
-puts "Creating matches"
 5.times do
   match = Match.create(
     tournament: tournoi1,
     begin_at: "15/05/2019 15:00"
     )
 
-  inscription1 = Registration.create(
-    user: User.where("supervisor=false").sample,
-    tournament: tournoi1,
-    category: "Senior"
-  )
-
-  inscription2 = Registration.create(
-    user: User.where("supervisor=false").sample,
-    tournament: tournoi1,
-    category: "Senior"
-  )
   Convocation.create(
   registration: inscription1,
   match: match,
   status: 'pending'
   )
   Convocation.create(
-    registration: inscription2,
+    registration: Registration.all.sample,
     match: match,
     status: 'pending'
   )
