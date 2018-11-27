@@ -10,12 +10,20 @@
 </div>
 <div class="container-fluid">
   <div class="row">
-    <h1 class="text-center"><%= Date.today %></h1>
-  </div>
-  <div class="row">
-    <div class="col sm-9 court">
+    <div class="col sm-9 court" style="text-align: center;">
       <% @tournament.matches.order(created_at: :desc).each do |match| %>
-        <%= render "shared/card_match", match: match %>
+        <% if match.begin_at.to_date == Date.today%>
+        <h2>Matchs du : <%= Date.today %></h2>
+          <%= render "shared/card_match", match: match %>
+        <% end %>
+           <% if match.begin_at.to_date == Date.today + 1%>
+        <h2>Matchs du : <%= Date.today + 1%></h2>
+          <%= render "shared/card_match", match: match %>
+        <% end %>
+           <% if match.begin_at.to_date == Date.today + 2%>
+        <h2>Matchs du : <%= Date.today + 2%></h2>
+          <%= render "shared/card_match", match: match %>
+        <% end %>
       <% end %>
     </div>
     <div class="col-sm-3">
