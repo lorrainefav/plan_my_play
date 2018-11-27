@@ -2,10 +2,8 @@ class RegistrationsController < ApplicationController
   before_action :destroy, only: [:update, :destroy]
 
   def index
-    # byebug
     @tournament = Tournament.find(params[:id])
     @match = Match.new
-    @users = @tournament.users
     @registrations = @tournament.registrations
 
     if params[:search].present?
@@ -36,9 +34,6 @@ class RegistrationsController < ApplicationController
     @registration.destroy
   end
 
-  def filter
-
-  end
 
   private
 
