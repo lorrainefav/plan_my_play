@@ -7,7 +7,7 @@ Registration.destroy_all
 Tournament.destroy_all
 User.destroy_all
 
-puts "creating a supervisor"
+puts "Creating a supervisor"
 supervisor = User.create(
    email: "supervisor@gmail.com",
    password: "azerty",
@@ -23,7 +23,7 @@ supervisor = User.create(
 )
 
 puts "Creating Tournaments"
-tournoi = Tournament.create(
+tournoi1 = Tournament.create(
   supervisor: supervisor,
   name: "Tournoi Adulte ASH",
   city: "Le Haillan",
@@ -32,6 +32,16 @@ tournoi = Tournament.create(
   end_at: "30/05/2019"
   )
 
+tournoi2 = Tournament.create(
+  supervisor: supervisor,
+  name: "Tournoi Senior",
+  city: "Le Bouscat",
+  courts_number: 8,
+  begin_at: "10/05/2019",
+  end_at: "30/05/2019"
+  )
+
+puts "Creating the player"
 durand = User.create(
  email: "player@gmail.com",
  password: "azerty",
@@ -46,25 +56,20 @@ durand = User.create(
  phone_number: "0698765432"
 )
 
-num = 0
-5.times do
-  num += 1
-  tournoi = Tournament.create(
-    supervisor: supervisor,
-    name: "Tournoi #{num}",
-    city: "Ville #{num}",
-    courts_number: 8,
-    begin_at: "01/06/2019",
-    end_at: "15/06/2019")
+inscription1 = Registration.create(
+  user: durand,
+  tournament: tournoi1,
+  category: "Senior"
+)
 
-  inscription = Registration.create(
-    user: durand,
-    tournament: tournoi,
-    category: "Senior"
-  )
-end
+inscription2 = Registration.create(
+  user: durand,
+  tournament: tournoi2,
+  category: "35"
+)
 
-puts "Creating Players"
+
+puts "Implementing Tournoi ASH"
 
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 filepath    = './db/Joueurs.csv'
@@ -82,32 +87,34 @@ CSV.foreach(filepath, csv_options) do |row|
    club: row['Club'],
    licence: row['Licence'],
    gender: gender,
-   ranking: row['Classt Simple'],
-   phone_number: row['Tél. Mob.']
+   phone_number: row['Tél. Mob.'],
+   ranking: row['Classt Simple']
   )
   inscription = Registration.create(
     user: player,
-    tournament: tournoi,
-    category: row['Cat. Epr.']
+    tournament: tournoi1,
+    category: row['Cat. Epr.'],
     )
   print "-"
 end
 puts ""
 
-puts "Creating matches"
-20.times do
-  Match.create(
-    tournament: tournoi,
-    begin_at: "15/05/2019 15:00")
-end
-
-puts "Creating convocations"
-40.times do
-  Convocation.create(
-    user: User.where("supervisor=false").sample,
-    match: Match.all.sample
+5.times do
+  match = Match.create(
+    tournament: tournoi1,
+    begin_at: "15/05/2019 15:00"
     )
-end
 
+  Convocation.create(
+  registration: inscription1,
+  match: match,
+  status: 'pending'
+  )
+  Convocation.create(
+    registration: Registration.all.sample,
+    match: match,
+    status: 'pending'
+  )
+end
 puts "Seeds done!"
 puts "-"*20

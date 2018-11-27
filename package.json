@@ -2,9 +2,12 @@
   "name": "plan_my_play",
   "private": true,
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^2.3.0",
     "@rails/webpacker": "3.5",
     "bootstrap": "^4.1.3",
+    "flatpickr": "^4.5.2",
     "jquery": "^3.3.1",
+    "places.js": "^1.14.0",
     "popper.js": "^1.14.5"
   },
   "devDependencies": {

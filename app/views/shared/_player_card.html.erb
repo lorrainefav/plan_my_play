@@ -1,0 +1,14 @@
+<div class="card border-secondary mb-3">
+  <div class="card-header d-flex justify-content-between">
+      <%= registration.user.first_name.capitalize %>
+      <%= registration.user.last_name.capitalize %>
+  </div>
+  <div class="card-body text-secondary">
+    <span class="card-text"> Class. : <%= registration.user.ranking %></span>
+    <br>
+    <span> Club : <%= registration.user.club.capitalize %></span>
+    <br>
+    <span> Cat. : #<%= registration.category %></span>
+  </div>
+  <div class="player" data-id="<%= registration.id %>"> Ajouter </div>
+</div>

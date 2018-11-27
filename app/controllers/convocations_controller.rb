@@ -9,7 +9,7 @@ class ConvocationsController < ApplicationController
     @convocation.refused!
   end
 
-  def send
+  def unique_send
     @convocation.pending!
   end
 

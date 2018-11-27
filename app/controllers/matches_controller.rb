@@ -5,10 +5,8 @@ class MatchesController < ApplicationController
   end
 
   def create
-    # byebug
-    @tournament = Tournament.find(params[:tournament_id])
+    @tournament = Tournament.find(params[:id])
     @match = @tournament.matches.new(match_params)
-
     if @match.save
       redirect_to @tournament
     else
@@ -28,17 +26,18 @@ class MatchesController < ApplicationController
 
   private
 
+
   def set_match
     @match = Match.find(params[:id])
   end
 
   def match_params
-    params.require(:match).permit(:begin_at, convocations_attributes: [:user_id])
+    params.require(:match).permit(:begin_at, convocations_attributes: [:registration_id])
   end
 
-  def convocation_params
-    params.require(:convocation).permit(:user)
+  # def convocation_params
+  #   params.require(:convocation).permit(:user)
 
-  end
+  # end
 
 end
