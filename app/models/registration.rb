@@ -6,6 +6,7 @@ class Registration < ApplicationRecord
   belongs_to :user
   belongs_to :tournament
   has_many :convocations
+  has_many :matches, through: :convocations
 
   validates :user_id, presence: true
   validates :tournament_id, presence: true
