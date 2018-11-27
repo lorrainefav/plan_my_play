@@ -1,25 +1,23 @@
-    <div class="row">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
+<div class="container">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
         <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link active" %>
-        </li>
-        <li class="nav-item">
-        <%= link_to "Joueurs",  tournament_users_path(@tournament), class:"nav-link" %>
-        </li>
-      </ul>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Joueurs",  registrations_path(@tournament), class:"nav-link" %>
+      </li>
+    </ul>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="text-center"><%= Date.today %></h1>
+  </div>
+  <div class="row">
+    <div class="col sm-9 court">
+      <% @tournament.matches.order(created_at: :desc).each do |match| %>
+        <%= render "shared/card_match", match: match %>
+      <% end %>
     </div>
-    <div class="row">
-      <div class="container" style="text-align: center;">
-      <h1><%= Date.today %></h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col sm-9 court">
-        <% @tournament.matches.order(created_at: :desc).each do |match| %>
-          <%= render "shared/card_match", match: match %>
-        <% end %>
-      </div>
-
     <div class="col-sm-3">
       <h2><%= @tournament.name %></h2>
           <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success btn-sm" %>
@@ -31,6 +29,7 @@
         <% end %>
       </div>
     </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="create_match" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -42,12 +41,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for([@tournament, @match]) do |f| %>
+        <%= simple_form_for([@match]) do |f| %>
           <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-            <%= convocation.input :user_id, collection: @tournament.users %>
+            <%= convocation.input :registration_id, collection: @tournament.registrations %>
           <% end %>
           <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-            <%= convocation.input :user_id, collection: @tournament.users %>
+            <%= convocation.input :registration_id, collection: @tournament.registrations %>
           <% end %>
           <div class="form-inputs">
             <%= f.input :begin_at %>
