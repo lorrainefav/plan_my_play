@@ -6,7 +6,7 @@ class MatchesController < ApplicationController
 
   def create
     # byebug
-    @tournament = Tournament.find(params[:tournament_id])
+    @tournament = Tournament.find(params[:id])
     @match = @tournament.matches.new(match_params)
 
     if @match.save
