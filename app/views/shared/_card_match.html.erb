@@ -1,6 +1,6 @@
 <div class="card mb-3" style="margin: 25px;">
-  <div class="card-header d-flex justify-content-between">
-    <%= match.begin_at %>
+  <div class="card-header" style="text-align: center;">
+    <%= match.begin_at.strftime("Le : %d - %m - %Y")%><%= match.begin_at.strftime(" à %I : %M %p")%>
   </div>
   <% match.convocations.each do |convocation| %>
     <div class="card-body text-secondary" >
