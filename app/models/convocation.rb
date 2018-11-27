@@ -6,5 +6,5 @@ class Convocation < ApplicationRecord
   enum status: { to_be_sent: 0, pending: 1, accepted: 2, refused: 3 }
 
   validates :registration_id, presence: true
-  validates :match_id, presence: true
+  #validates :match_id, presence: true
 end
