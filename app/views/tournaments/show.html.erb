@@ -10,12 +10,13 @@
 </div>
 <div class="container-fluid">
   <div class="row">
-    <h1 class="text-center"><%= Date.today %></h1>
-  </div>
-  <div class="row">
-    <div class="col sm-9 court">
+    <div class="col sm-9 court" style="text-align: center;">
+      <h2>Les Matchs du jour</h2>
+      <p><%= Date.today.strftime("Le : %d.%m.%Y") %></p>
       <% @tournament.matches.order(created_at: :desc).each do |match| %>
-        <%= render "shared/card_match", match: match %>
+        <% if match.begin_at.to_date == Date.today %>
+          <%= render "shared/card_match", match: match %>
+        <% end %>
       <% end %>
     </div>
     <div class="col-sm-3">
@@ -30,6 +31,7 @@
       </div>
     </div>
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="create_match" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
