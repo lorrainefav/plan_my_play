@@ -19,9 +19,9 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
 const datepickers = document.querySelectorAll(".datepicker")
 
-datepickers.forEach((date_input) => {
-  const startDateElement = document.getElementById('start_date');
-  const endDateElement = document.getElementById('end_date');
+datepickers.forEach((date_inputs) => {
+  const startDateElement = date_inputs.querySelector('#start_date');
+  const endDateElement = date_inputs.querySelector('#end_date');
   flatpickr(startDateElement, {
     minDate: "today",
     altInput: true,
