@@ -1,9 +1,9 @@
-<div class="card mb-3">
+<div class="card mb-3" style="margin: 25px;">
   <div class="card-header d-flex justify-content-between">
     <%= match.begin_at %>
   </div>
   <% match.convocations.each do |convocation| %>
-    <div class="card-body text-secondary">
+    <div class="card-body text-secondary" >
         <p class="card-text">
         <%= convocation.user.first_name %>
         <%= convocation.user.last_name %>
@@ -13,14 +13,37 @@
     </div>
   <% end %>
   <div class="card-footer cm">
-  <%= simple_form_for([match]) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :begin_at %>
+    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#maj_match">
+      Mettre à jour
+    </button>
+  </div>
+</div>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="maj_match" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modifier les paramêtres du match</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for([match]) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :begin_at %>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <div class="form-actions">
+          <%= f.button :submit, "Mettre à jour", method: :patch, class:'btn btn-warning'  %>
+          <%= link_to "Supprimer", match_path(match), method: :delete, class:'btn btn-secondary'%>
+        </div>
+      <% end %>
+      </div>
     </div>
-    <div class="form-actions">
-      <%= f.button :submit, "Update", method: :patch, class: "btn btn-success"  %>
-      <%= link_to "Delete", match_path(match), method: :delete, class: 'btn btn-secondary'%>
-    </div>
-  <% end %>
   </div>
 </div>

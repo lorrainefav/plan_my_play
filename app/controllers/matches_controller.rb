@@ -8,7 +8,6 @@ class MatchesController < ApplicationController
     # byebug
     @tournament = Tournament.find(params[:id])
     @match = @tournament.matches.new(match_params)
-
     if @match.save
       redirect_to @tournament
     else
