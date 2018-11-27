@@ -1,0 +1,24 @@
+<div class="container">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <%= link_to "Mes convocations",  player_convocations_path, class:"nav-link active" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Mes disponibilités",  player_availabilities_path, class:"nav-link" %>
+      </li>
+    </ul>
+</div>
+
+
+
+
+
+<div class="container">
+<div class="card-columns convoc">
+    <% @convocations.each do |convocation| %>
+    <%=  render "shared/card_convocation", convocation: convocation %>
+    <% end %>
+</div>
+</div>
+
+

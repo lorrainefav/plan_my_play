@@ -1,0 +1,11 @@
+<h3>Filtres</h3>
+<div>
+  <%= simple_form_for(:search, url: registrations_path, method: :get) do |form| %>
+    <%= form.input :query, label: false, placeholder: "Nom ou prénom" %>
+    <%= form.input :category, collection: Registration::CATEGORIES, label: 'Catégorie' %>
+    <%= form.input :gender , as: :radio_buttons, collection: User::GENDERS,label: false %>
+    <%= form.input :registration_ranking, collection: Registration::RANKING, label: 'Classement'%>
+
+    <%= form.submit "FILTRER" %>
+  <% end %>
+</div>

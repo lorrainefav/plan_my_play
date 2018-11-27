@@ -1,15 +1,14 @@
 <div class="card border-secondary mb-3">
   <div class="card-header d-flex justify-content-between">
-    Mme, Mr :
-      <%= user.first_name %>
-      <%= user.last_name %>
+      <%= registration.user.first_name.capitalize %>
+      <%= registration.user.last_name.capitalize %>
   </div>
   <div class="card-body text-secondary">
-    <p class="card-text">
-       Club : <%= user.club %>
-      , licence N°: <%= user.licence %>
-      , Classement : <%= user.ranking %>
-      , Catégorie : <%= user.gender %>
-      </p>
+    <span class="card-text"> Class. : <%= registration.user.ranking %></span>
+    <br>
+    <span> Club : <%= registration.user.club.capitalize %></span>
+    <br>
+    <span> Cat. : #<%= registration.category %></span>
   </div>
-  </div>
+  <div class="player" data-id="<%= registration.id %>"> Ajouter </div>
+</div>
