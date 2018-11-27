@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :tournaments, foreign_key: :supervisor_id
-  has_many :availabilities
+  has_many :availabilities, dependent: :destroy
   has_many :registrations
   has_many :convocations, through: :registrations
 
