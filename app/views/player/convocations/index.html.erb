@@ -13,12 +13,16 @@
 
 
 
-<div class="container">
-<div class="card-columns convoc">
+<div class="container py-4">
+<div class="row">
     <% @convocations.each do |convocation| %>
-    <%=  render "shared/card_convocation", convocation: convocation %>
+    <div class="col-xs-12 col-sm-4">
+      <%=  render "shared/card_convocation", convocation: convocation %>
+    </div>
     <% end %>
 </div>
 </div>
+
+
 
 

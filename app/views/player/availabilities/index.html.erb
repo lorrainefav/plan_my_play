@@ -23,14 +23,15 @@
           <%= simple_form_for [:player, availability] do |form|%>
            <div class="row pt-4 datepicker">
             <div class="col-5 form-inline">
-              <%= form.input :begin_at, input_html: { id:'start_date'}, as: :string, class: "form-control", label: "Du" %>
+              <%= form.input :begin_at, input_html: { id:'start_date'}, label_html: { class: 'mr-2' }, as: :string, class: "form-control", label: "Du" %>
             </div>
             <div class="col-5 form-inline">
-              <%= form.input :end_at, input_html: { id:'end_date'}, as: :string, class: "form-control", label: "au" %>
+              <%= form.input :end_at, input_html: { id:'end_date'}, label_html: { class: 'mr-2' }, as: :string, class: "form-control", label: "au" %>
             </div>
             <div class="col-1">
-              <span><i class="fas fa-pencil-alt"></i></span>
-              <%= form.submit '' %>
+              <button type="submit" class="btn btn-light">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
             </div>
             <% end %>
             <div class="col-1">
@@ -45,10 +46,10 @@
     <div class="col-1">
     </div>
     <div class="col-4 pt-5 datepicker">
-      <p>Ajouter un nouveau créneau disponible</p>
+      <h4>Nouveau créneau disponible</h4>
       <%= simple_form_for [:player, @availability] do |form|%>
-        <%= form.input :begin_at, input_html: { id:'start_date'}, as: :string, label: false, placeholder:"Début" %>
-        <%= form.input :end_at, input_html: { id:'end_date' }, as: :string, label: false, placeholder:"Fin" %>
+        <%= form.input :begin_at, input_html: { id:'start_date'}, as: :string, label: "Début" %>
+        <%= form.input :end_at, input_html: { id:'end_date' }, as: :string, label: "Fin" %>
         <%= form.submit "Valider" %>
       <% end %>
     </div>
