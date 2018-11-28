@@ -1,15 +1,17 @@
 <h4>Création de match</h4>
-<%= simple_form_for([@match]) do |f| %>
-  <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-    <%= convocation.input :registration_id, collection: @tournament.registrations %>
+  <div>
+  <%= simple_form_for([@match]) do |f| %>
+    <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
+      <%= convocation.input :registration_id, collection: @registrations, id: 'convocation1' %>
+    <% end %>
+    <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
+      <%= convocation.input :registration_id, collection: @registrations, id: 'convocation2' %>
+    <% end %>
+    <div class="form-inputs">
+      <%= f.input :begin_at %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Create" %>
+    </div>
   <% end %>
-  <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-    <%= convocation.input :registration_id, collection: @tournament.registrations %>
-  <% end %>
-  <div class="form-inputs">
-    <%= f.input :begin_at %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Create" %>
-  </div>
-<% end %>
+</div>

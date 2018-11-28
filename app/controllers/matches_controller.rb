@@ -5,7 +5,6 @@ class MatchesController < ApplicationController
   end
 
   def create
-    # byebug
     @tournament = Tournament.find(params[:id])
     @match = @tournament.matches.new(match_params)
     if @match.save
@@ -26,6 +25,7 @@ class MatchesController < ApplicationController
   end
 
   private
+
 
   def set_match
     @match = Match.find(params[:id])
