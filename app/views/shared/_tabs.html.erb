@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
   <% if current_user.supervisor %>
-    <div class="container">
+    <div class="container-fluid px-5">
+      <div class="col-md-8 offset-2">
         <ul class="nav nav-tabs">
           <li class="nav-item">
             <%= link_to "Joueurs", registrations_path(@tournament), class: tab_classes(registrations_path(@tournament)) %>
@@ -9,6 +10,7 @@
             <%= link_to "Matches", tournament_path(@tournament), class: tab_classes(tournament_path(@tournament)) %>
           </li>
         </ul>
+      </div>
     </div>
   <% else %>
     <div class="container">

@@ -34,20 +34,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for([@match]) do |f| %>
-          <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-            <%= convocation.input :registration_id, label: "Joueur 1  ", collection: @tournament.registrations %>
-          <% end %>
-          <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-            <%= convocation.input :registration_id, label: "Joueur 2  ", collection: @tournament.registrations %>
-          <% end %>
-          <div class="form-inputs">
-            <%= f.input :begin_at, label: "Date" %>
-          </div>
-          <div class="form-actions">
-            <%= f.submit "Créer", class: "btn btn-outline-secondary" %>
-          </div>
-        <% end %>
+        <%= render 'shared/match_form' %>
       </div>
     </div>
   </div>
