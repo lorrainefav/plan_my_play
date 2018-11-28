@@ -21,9 +21,9 @@
     </div>
     <div class="col-sm-3">
       <h2><%= @tournament.name %></h2>
-          <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success btn-sm" %>
-        <button type="button" class="btn btn-outline-dark btn-sm" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_match">
-          Créations de matchs
+          <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success" %>
+        <button type="button" class="btn btn-outline-secondary" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_match">
+          Nouveau match
         </button>
         <% @tournament.matches.order(created_at: :desc).each do |match| %>
           <%= render "shared/card_match", match: match %>
@@ -37,7 +37,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Création du match</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Nouveau match</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -45,16 +45,16 @@
       <div class="modal-body">
         <%= simple_form_for([@match]) do |f| %>
           <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-            <%= convocation.input :registration_id, collection: @tournament.registrations %>
+            <%= convocation.input :registration_id, label: "Joueur 1  ", collection: @tournament.registrations %>
           <% end %>
           <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-            <%= convocation.input :registration_id, collection: @tournament.registrations %>
+            <%= convocation.input :registration_id, label: "Joueur 2  ", collection: @tournament.registrations %>
           <% end %>
           <div class="form-inputs">
-            <%= f.input :begin_at %>
+            <%= f.input :begin_at, label: "Date" %>
           </div>
           <div class="form-actions">
-            <%= f.button :submit, "Créer le match" %>
+            <%= f.submit "Créer", class: "btn btn-outline-secondary" %>
           </div>
         <% end %>
       </div>

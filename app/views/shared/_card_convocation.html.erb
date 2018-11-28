@@ -1,4 +1,4 @@
-<div class="card border-secondary mb-6">
+<div class="card border-secondary mb-4">
   <div class="card-header d-flex justify-content-between">
     <%= convocation.match.tournament.name %>
       <% if convocation.status.to_s == "refused" %>
@@ -10,10 +10,11 @@
       <% end %>
   </div>
   <div class="card-body text-secondary">
-    <p class="card-text">le : <%= convocation.match.begin_at.strftime('%a %d %b %Y') %> à : <%= convocation.match.begin_at.strftime('%I:%M:%S %p') %> </p>
+    <p class="card-text">Le <%= convocation.match.begin_at.strftime("%d/%m/%Y à %I:%M%p") %> </p>
     </div>
     <div class="card-footer d-flex justify-content-around">
-      <button type="button" class="btn btn-danger btn-sm"><%= link_to "Refusez", refuse_player_convocation_path(convocation), method: :post, remote: true %></button>
-      <button type="button" class="btn btn-success btn-sm"><%= link_to "Acceptez", accept_player_convocation_path(convocation), method: :post, remote: true %></button>
+      <button type="button" class="btn btn-danger btn-sm"><%= link_to "Refuser", refuse_player_convocation_path(convocation), method: :post, remote: true %></button>
+      <button type="button" class="btn btn-success btn-sm"><%= link_to "Accepter", accept_player_convocation_path(convocation), method: :post, remote: true %></button>
       </div>
 </div>
+
