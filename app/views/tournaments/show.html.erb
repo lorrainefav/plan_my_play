@@ -8,29 +8,39 @@
       </li>
     </ul>
 </div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col sm-9 court" style="text-align: center;">
+
+  <div class="container-fluid">
+    <div class="row">
       <h2>Les Matchs du jour</h2>
       <p><%= Date.today.strftime("Le : %d.%m.%Y") %></p>
-      <% @tournament.matches.order(created_at: :desc).each do |match| %>
-        <% if match.begin_at.to_date == Date.today %>
-          <%= render "shared/card_match", match: match %>
-        <% end %>
-      <% end %>
     </div>
-    <div class="col-sm-3">
-      <h2><%= @tournament.name %></h2>
-          <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success" %>
-        <button type="button" class="btn btn-outline-secondary" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_match">
-          Nouveau match
+    <div class="row">
+      <div class="col-md-9">
+        <div class="container-fluid">
+        <% (1..15).each do |row|%>
+          <div class="row">
+            <% (1..4).each do |col| %>
+              <div class="col-3 data-row=<%= row %> data-col=<%= col %>">
+                <%= "#{row} / #{col}" %>
+                <% @tournament.matches.where(court:col).each do |match| %>
+                  <%= render "shared/card_match", match: match %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h2><%= @tournament.name %></h2>
+        <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success" %>
+        <button type="button" class="btn btn-outline-secondary" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_match">Nouveau match
         </button>
         <% @tournament.matches.order(created_at: :desc).each do |match| %>
           <%= render "shared/card_match", match: match %>
         <% end %>
       </div>
     </div>
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="create_match" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
