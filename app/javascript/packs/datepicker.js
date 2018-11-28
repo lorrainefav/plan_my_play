@@ -27,7 +27,7 @@ datepickers.forEach((date_input) => {
     altInput: true,
     enableTime: true,
     altFormat: "F j, Y",
-    dateFormat: "Y-m-d",
+    dateFormat: "Y-m-d H:i",
     "plugins": [new rangePlugin({ input: endDateElement})]
   });
 })
