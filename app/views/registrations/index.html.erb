@@ -17,11 +17,10 @@
       <%= render 'filters', tournament: @tournament %>
     </div>
     <div class="col-md-8">
-      <ul>
-        <% @registrations.each do |registration| %>
-          <%= render "shared/player_card", registration: registration %>
-        <% end %>
-      </ul>
+      <h2 id="no-players" class="d-none">Pas de joueurs pour ces critères</h2>
+      <div id="player-cards">
+        <%= render @registrations %>
+      </div>
     </div>
     <div class="col-md-2">
       <%= render 'shared/match_form' %>

@@ -14,6 +14,11 @@ class RegistrationsController < ApplicationController
       filters = "#{query} #{category} #{gender} #{registration_ranking}"
       @registrations = @tournament.registrations.filter_players(filters) if filters.present?
     end
+
+    respond_to do |format|
+        format.html
+        format.js
+    end
   end
 
   def new
