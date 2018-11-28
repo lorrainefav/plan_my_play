@@ -1,15 +1,4 @@
-<div class="container">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Joueurs",  registrations_path(@tournament), class:"nav-link active" %>
-    </li>
-  </ul>
-</div>
-
-
+<%= render 'shared/tabs' %>
 <div class="container-fluid py-2">
   <h2 class='text-center'>Liste des inscrits à <%= @tournament.name %></h2>
   <div class="row">

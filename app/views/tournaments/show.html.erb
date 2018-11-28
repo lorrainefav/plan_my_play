@@ -1,16 +1,7 @@
-<div class="container">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link active" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Joueurs",  registrations_path(@tournament), class:"nav-link" %>
-      </li>
-    </ul>
-</div>
+<%= render 'shared/tabs' %>
 <div class="container-fluid">
   <div class="row">
-    <div class="col sm-9 court" style="text-align: center;">
+    <div class="col-sm-9 court" style="text-align: center;">
       <h2>Les Matchs du jour</h2>
       <p><%= Date.today.strftime("Le : %d.%m.%Y") %></p>
       <% @tournament.matches.order(created_at: :desc).each do |match| %>
