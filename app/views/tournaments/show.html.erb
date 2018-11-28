@@ -12,12 +12,250 @@
   <div class="row">
     <div class="col sm-9 court" style="text-align: center;">
       <h2>Les Matchs du jour</h2>
-      <p><%= Date.today.strftime("Le : %d.%m.%Y") %></p>
-      <% @tournament.matches.order(created_at: :desc).each do |match| %>
-        <% if match.begin_at.to_date == Date.today %>
-          <%= render "shared/card_match", match: match %>
-        <% end %>
-      <% end %>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+          <h2>Court N°1</h2>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+          <h2>Court N°2</h2>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+          <h2>Court N°3</h2>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+          <h2>Court N°4</h2>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+          <h2>Court N°5</h2>
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>9 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>10 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>11 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>12 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>13 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>14 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>15 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>16 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>17 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>18 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>19 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>20 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>21 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>22 h</p>
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule border-bottom" style="width: 200px; height: 75px;">
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center text-center">
+        <div class="cellule" style="width: 200px; height: 75px;">
+          <p>23 h</p>
+        </div>
+        <div class="cellule " style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule " style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule " style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule " style="width: 200px; height: 75px;">
+        </div>
+        <div class="cellule " style="width: 200px; height: 75px;">
+        </div>
+      </div>
     </div>
     <div class="col-sm-3">
       <h2><%= @tournament.name %></h2>
@@ -29,7 +267,7 @@
           <%= render "shared/card_match", match: match %>
         <% end %>
       </div>
-    </div>
+  </div>
 </div>
 
 <!-- Modal -->

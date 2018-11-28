@@ -18,6 +18,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'pg_search'
 #gem 'rails-jquery-autocomplete'
+#gem 'datetime_helper'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
