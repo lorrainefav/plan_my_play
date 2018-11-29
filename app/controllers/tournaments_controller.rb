@@ -3,6 +3,8 @@ class TournamentsController < ApplicationController
   def index
     @user = current_user
     @tournaments = @user.tournaments
+    @tournament = Tournament.new
+
   end
 
   def show
@@ -17,9 +19,15 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new(tournament_params)
     @tournament.supervisor = current_user
     if @tournament.save
-      redirect_to tournaments_path
+      respond_to do |format|
+        format.html { redirect_to tournaments_path }
+        format.js # render create.js.erb
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.js
+      end
     end
   end
 
