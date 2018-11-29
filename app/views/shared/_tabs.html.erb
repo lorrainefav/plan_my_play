@@ -1,34 +1,33 @@
 <% if user_signed_in? %>
   <% if current_user.supervisor %>
     <div class="container-fluid px-5">
-      <div class="col-md-8 offset-2">
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <%= link_to "Joueurs", registrations_path(@tournament), class: tab_classes(registrations_path(@tournament)) %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Matches", tournament_path(@tournament), class: tab_classes(tournament_path(@tournament)) %>
-          </li>
-        </ul>
-      </div>
+<!--       <div class="row d-flex">
+        <div class="col-md-8 offset-2"> -->
+          <ul class="nav nav-tabs d-flex">
+            <li class="nav-item flex-fill text-center">
+              <%= link_to "Joueurs", registrations_path(@tournament), class: tab_classes(registrations_path(@tournament)) %>
+            </li>
+            <li class="nav-item flex-fill text-center">
+              <%= link_to "Matches", tournament_path(@tournament), class: tab_classes(tournament_path(@tournament)) %>
+            </li>
+          </ul>
+<!--         </div>
+      </div> -->
     </div>
   <% else %>
-    <div class="container">
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
+    <div class="container-fluid px-5">
+        <ul class="nav nav-tabs d-flex">
+          <li class="nav-item flex-fill text-center">
             <%= link_to "Mes convocations",  player_convocations_path, class: tab_classes(player_convocations_path) %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item flex-fill text-center">
             <%= link_to "Mes tournois",  player_tournaments_path, class: tab_classes(player_tournaments_path) %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item flex-fill text-center">
             <%= link_to "Mes disponibilités",  player_availabilities_path, class: tab_classes(player_availabilities_path) %>
           </li>
         </ul>
     </div>
   <% end %>
-
-<% else %>
-  <h1>Mettre en transparence</h1>
 <% end %>
 

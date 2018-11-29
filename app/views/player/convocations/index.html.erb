@@ -1,27 +1,34 @@
-<div class="container">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <%= link_to "Mes convocations",  player_convocations_path, class:"nav-link active" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Mes disponibilités",  player_availabilities_path, class:"nav-link" %>
-      </li>
-    </ul>
-</div>
-
-
-
-
-
-<div class="container py-4">
-<div class="row">
-    <% @convocations.each do |convocation| %>
-    <div class="col-xs-12 col-sm-4">
-      <%=  render "shared/card_convocation", convocation: convocation %>
+<%= render 'shared/tabs' %>
+<div class="container py-5">
+    <div class="row">
+      <% if @pending_convocations.any? %>
+        <h4>Convocations en attente de réponse</h4>
+      <% else %>
+        <h4>Aucune convocation en attente de réponse</h4>
+      <% end %>
     </div>
-    <% end %>
+    <div class="row d-flex justify-content-around" id="pending-convocations">
+      <% @pending_convocations.each do |pending_convocation| %>
+        <%=  render "shared/card_convocation", convocation: pending_convocation %>
+      <% end %>
+    </div>
+    <div class="row">
+      <p>****</p>
+    </div>
+    <div class="row">
+      <% if @current_convocations.any? %>
+        <h4>Matchs à venir</h4>
+      <% else %>
+        <h4>Aucun match prochainement</h4>
+      <% end %>
+    </div>
+    <div class="row d-flex justify-content-around" id="current-convocations">
+      <% @current_convocations.each do |current_convocation| %>
+        <%=  render "shared/card_convocation", convocation: current_convocation %>
+      <% end %>
+    </div>
 </div>
-</div>
+
 
 
 
