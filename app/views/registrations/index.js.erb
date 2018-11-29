@@ -1,9 +1,8 @@
-var refuseButton = document.getElementById('refuse-button');
-var acceptButton = document.getElementById('accept-button');
-var actionsButton = document.getElementById('action-buttons');
-var pendingConvocations = document.getElementById('pending-convocations');
-var currentConvocations = document.getElementById('current-convocations');
+var playerCards=document.getElementById('player-cards');
+playerCards.innerHTML = "<%= j render @registrations %>";
 
-pendingConvocations.innerHTML = "<%= j render pending-convocations %>";
-currentConvocations.innerHTML = "<%= j render current-convocations %>";
-
+<% if @registrations.none? %>
+  document.getElementById('no-players').classList.remove('d-none');
+<% else %>
+  document.getElementById('no-players').classList.add('d-none');
+<% end %>

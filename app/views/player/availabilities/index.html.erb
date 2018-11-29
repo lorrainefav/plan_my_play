@@ -1,64 +1,49 @@
 <%= render 'shared/tabs' %>
+<%= render 'shared/flashes' %>
 
-<div class="container">
-  <%= simple_form_for [:player, @availability], wrapper: :inline_form, html: { class: 'form-inline my-3' }  do |f| %>
-    <%= f.input_field :begin_at, class: "form-control mx-2" %> jusqu'à
-    <%= f.input_field :end_at, discard_day: true, discard_month: true, discard_year: true, class: "form-control mx-2" %>
-    <%= f.submit class: "btn btn-primary" %>
-  <% end %>
+<div class="container py-4">
+  <div class="newdispo">
+    <h4>Ajouter un nouveau créneau</h4>
+    <%= simple_form_for [:player, @availability], wrapper: :inline_form, html: { class: 'form-inline my-3' }  do |f| %>
+      <%= f.input_field :begin_at, class: "form-control mx-2" %> jusqu'à
+      <%= f.input_field :end_at, discard_day: true, discard_month: true, discard_year: true, class: "form-control mx-2" %>
+      <%= f.submit "Créer", class: "btn btn-outline-secondary" %>
+    <% end %>
+  </div>
+  <div class="listedispo">
+    <h4>Liste de mes disponibilités à venir</h4>
+    <% if @availabilities.empty? %>
+      <div class="pt-5 ">
+        N'ayant pas précisé vos disponibilités, le juge arbitre peut vous convoquer à toute heure de la journée !
+      </div>
+    <% else %>
 
-  <hr>
-
-  <% current_user.availabilities.each do |availability| %>
-    <p> <%= availability.inspect %> </p>
-  <% end %>
-
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-7">
-      <% if @availabilities.empty? %>
-      <div class="text-center pt-5 ">
-        N'ayant pas précisé vos disponibilités, le juge arbitre peut vous convoquer à toute heure de la journée ! </div>
-      <% else %>
-
+      <div class="container">
         <% @availabilities.each do |availability| %>
-          <%= simple_form_for [:player, availability] do |form|%>
-           <div class="row pt-4 datepicker">
-            <div class="col-5 form-inline">
-              <%= form.input :begin_at, input_html: { id:'start_date'}, label_html: { class: 'mr-2' }, as: :string, class: "form-control", label: "Du" %>
+          <div class="row justify-content-center py-2">
+            <div class="card justify-content-center col-sm">
+              <div>
+                <span class="text-muted">Le</span>
+                <strong><%= availability.begin_at.strftime("%d.%m.%Y")%></strong>
+                <span class="text-muted"> de </span>
+                <%= availability.begin_at.strftime("%HH%M")%>
+                <%= availability.end_at.strftime("à %HH%M")%>
+              </div>
             </div>
-            <div class="col-5 form-inline">
-              <%= form.input :end_at, input_html: { id:'end_date'}, label_html: { class: 'mr-2' }, as: :string, class: "form-control", label: "au" %>
-            </div>
-            <div class="col-1">
-              <button type="submit" class="btn btn-light">
-                <i class="fas fa-pencil-alt"></i>
-              </button>
-            </div>
-            <% end %>
-            <div class="col-1">
+            <div class="col-sm">
               <%= link_to player_availability_path(availability), method: :delete, class: 'btn btn-light' do %>
-                <i class="fas fa-trash-alt"></i>
+                  <i class="fas fa-trash-alt"></i>
               <% end %>
             </div>
-           </div>
+          </div>
+
         <% end %>
-      <% end %>
-    </div>
-    <div class="col-1">
-    </div>
-    <div class="col-4 pt-5 datepicker">
-      <h4>Nouveau créneau disponible</h4>
-      <%= simple_form_for [:player, @availability] do |form|%>
-        <%= form.input :begin_at, input_html: { id:'start_date'}, as: :string, label: "Début" %>
-        <%= form.input :end_at, input_html: { id:'end_date' }, as: :string, label: "Fin" %>
-        <%= form.submit "Valider" %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
+
+
 
 
 
