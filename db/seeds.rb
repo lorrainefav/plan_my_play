@@ -13,8 +13,8 @@ supervisor = User.create(
    password: "azerty",
    password_confirmation: "azerty",
    supervisor: true,
-   last_name: "Dupont",
-   first_name: "Michel",
+   last_name: "Yann",
+   first_name: "Grégoire@",
    club: "le Haillan",
    licence: "1234567 A",
    gender: "men",
@@ -25,21 +25,22 @@ supervisor = User.create(
 puts "Creating Tournaments"
 tournoi1 = Tournament.create(
   supervisor: supervisor,
-  name: "Tournoi Adulte ASH",
-  city: "Le Haillan",
-  courts_number: 4,
-  begin_at: "10/05/2019",
-  end_at: "30/05/2019"
+  name: "Tournoi Play In Challenger",
+  city: "Lille",
+  courts_number: 8,
+  begin_at: "10/05/2018",
+  end_at: "25/05/2018"
   )
 
 tournoi2 = Tournament.create(
   supervisor: supervisor,
-  name: "Tournoi Senior",
-  city: "Le Bouscat",
+  name: "Tournoi BNP Paribas Primerose",
+  city: "Bordeaux",
   courts_number: 8,
-  begin_at: "10/05/2019",
-  end_at: "30/05/2019"
+  begin_at: "20/010/2018",
+  end_at: "07/11/2018"
   )
+
 
 puts "Creating the player"
 durand = User.create(
@@ -58,7 +59,7 @@ durand = User.create(
 
 inscription1 = Registration.create(
   user: durand,
-  tournament: tournoi1,
+  tournament: tournoi2,
   category: "Senior"
 )
 
@@ -82,8 +83,8 @@ CSV.foreach(filepath, csv_options) do |row|
    password: "azerty",
    password_confirmation: "azerty",
    supervisor: false,
-   last_name: row['Nom'],
-   first_name: row['Prénom'],
+   last_name: row['Gautier'],
+   first_name: row['Valin'],
    club: row['Club'],
    licence: row['Licence'],
    gender: gender,
@@ -99,7 +100,7 @@ CSV.foreach(filepath, csv_options) do |row|
 end
 puts ""
 
-5.times do
+15.times do
   match = Match.create(
     tournament: tournoi1,
     begin_at: "15/05/2019 15:00"
