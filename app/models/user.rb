@@ -17,6 +17,6 @@ class User < ApplicationRecord
   # "15/5", "15/4", "15/3", "15/2", "15/1", "15", "5/6", "4/6", "3/6", "2/6", "1/6", "0", "-2/6", "-4/6", "-15", "TOP100" ] }
 
   def to_s
-    "#{first_name} #{last_name} - #{ranking} - #{club}"
+    "#{first_name} #{last_name}"
   end
 end
