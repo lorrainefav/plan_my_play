@@ -19,6 +19,8 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new(tournament_params)
     @tournament.supervisor = current_user
     if @tournament.save
+      flash[:notice] = "Nouveau tournoi créé !"
+
       respond_to do |format|
         format.html { redirect_to tournaments_path }
         format.js # render create.js.erb

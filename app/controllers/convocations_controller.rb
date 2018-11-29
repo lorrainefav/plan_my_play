@@ -16,6 +16,7 @@ class ConvocationsController < ApplicationController
   def grouped_send
     @tournament = Tournament.find(params[:id])
     @tournament.send_convocations
+    flash[:notice] = "Convocations envoyées !"
     redirect_to @tournament
   end
 
