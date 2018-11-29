@@ -1,8 +1,10 @@
 <%= render 'shared/tabs' %>
 <div class="container-fluid px-5">
-    <div class="text-center">
-      <h2>Les Matchs du jour</h2>
-      <p><%= Date.today.strftime("Le : %d.%m.%Y") %></p>
+    <div class="text-center py-3">
+      <h2>Matchs du jour</h2>
+      <h4><%= @date.strftime("%d.%m.%Y") %></h4>
+      <%= link_to "Previous", tournament_path(@tournament, date: @date - 1.days) %>
+      <%= link_to "Next", tournament_path(@tournament, date: @date + 1.days) %>
     </div>
 
     <div class="row">
@@ -16,14 +18,14 @@
               </div>
             <% end %>
           </div>
-          <% (9..22).each do |row|%>
+          <% (9..22).each do |hour|%>
             <div class="row" style="border-top: 1px solid #CCC; height:100px">
               <div class="col-2">
-                <%= row %>:00
+                <%= hour %>:00
               </div>
-              <% (1..5).each do |col| %>
-                <div class="col-2 dropable" data-row=<%= row %> data-col=<%= col %>">
-                  <% @tournament.matches.where(court:col, begin_at: DateTime.now.change(hour: row)).each do |match| %>
+              <% (1..5).each do |court| %>
+                <div class="col-2 dropable" data-date="<%= @date.change(hour: hour) %>" data-court=<%= court %>>
+                  <% @tournament.matches.where(court:court, begin_at: @date.change(hour: hour)).each do |match| %>
                     <%= render "shared/card_match", match: match %>
                   <% end %>
                 </div>

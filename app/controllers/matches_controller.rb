@@ -16,7 +16,11 @@ class MatchesController < ApplicationController
 
   def update
     @match.update(match_params)
-    redirect_to tournament_path(@match.tournament)
+    respond_to do |format|
+      # format.html{redirect_to tournament_path(@match.tournament)}
+      format.js{head :ok}
+    end
+
   end
 
   def destroy
@@ -32,7 +36,7 @@ class MatchesController < ApplicationController
   end
 
   def match_params
-    params.require(:match).permit(:begin_at, convocations_attributes: [:registration_id])
+    params.require(:match).permit(:begin_at, :court, convocations_attributes: [:registration_id])
   end
 
   # def convocation_params

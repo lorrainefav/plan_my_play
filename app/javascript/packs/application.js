@@ -14,4 +14,24 @@ window.closeBootstrapModal = function (id) {
 
 
 import * as dragula from 'dragula';
-dragula([].slice.call(document.querySelectorAll('.dropable')));
+var drake = dragula([].slice.call(document.querySelectorAll('.dropable')));
+drake.on('drop', function(el,target){
+  let matchId = el.dataset.matchId;
+  let date = target.dataset.date;
+  let court = target.dataset.court;
+  let data = new FormData();
+  let url = '/matches/' + matchId;
+  data.append('match[begin_at]', date);
+  data.append('match[court]', court);
+  Rails.ajax({
+    type: 'PATCH',
+    dataType: "text/javascript",
+    url: url,
+    data
+
+  });
+})
+
+
+
+
