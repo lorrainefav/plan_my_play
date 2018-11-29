@@ -1,7 +1,7 @@
 <div class="col-xs-12 col-sm-4">
 
   <div class="card mb-2" style="width: 18rem;">
-    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtj_afZu3Qh52f5mJmGDjpPC0w6DnIUE598E4sUJVlM00uiUcC" alt="Card image cap">
+    <%= image_tag tournament.photo_url, id: "logo", width:250, height: 250 %>
     <div class="card-body">
       <h5 class="card-title"><%= tournament.name %></h5>
       <p class="card-text"><%= tournament.city %></p>
