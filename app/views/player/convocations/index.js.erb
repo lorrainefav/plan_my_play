@@ -1,8 +1,0 @@
-var playerCards=document.getElementById('player-cards');
-playerCards.innerHTML = "<%= j render @convocations %>";
-
-<% if @registrations.none? %>
-  document.getElementById('no-players').classList.remove('d-none');
-<% else %>
-  document.getElementById('no-players').classList.add('d-none');
-<% end %>
