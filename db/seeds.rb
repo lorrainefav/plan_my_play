@@ -32,7 +32,8 @@ tournoi1 = Tournament.create(
   city: "Le Haillan",
   courts_number: 7,
   begin_at: "20/11/2018",
-  end_at: "05/12/2018"
+  end_at: "05/12/2018",
+  photo_url: "Tournoi1.jpg"
   )
 
 tournoi2 = Tournament.create(
@@ -41,7 +42,8 @@ tournoi2 = Tournament.create(
   city: "Le Bouscat",
   courts_number: 8,
   begin_at: "06/12/2018",
-  end_at: "20/06/2018"
+  end_at: "20/06/2018",
+  photo_url: "Tournoi2.jpg"
   )
 
 tournoi3 = Tournament.create(
@@ -50,7 +52,8 @@ tournoi3 = Tournament.create(
   city: "Avensan",
   courts_number: 4,
   begin_at: "10/03/2019",
-  end_at: "25/03/2019"
+  end_at: "25/03/2019",
+  photo_url: "Tournoi5.jpg"
   )
 tournoi4 = Tournament.create(
   supervisor: supervisor,
@@ -58,7 +61,9 @@ tournoi4 = Tournament.create(
   city: "Bordeaux",
   courts_number: 12,
   begin_at: "10/09/2018",
-  end_at: "30/09/2018")
+  end_at: "30/09/2018",
+  photo_url: "Tournoi4.jpg"
+  )
 
 puts "Creating the player"
 gauthier = User.create(
