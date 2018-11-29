@@ -1,7 +1,10 @@
-<div class="card border-secondary mb-3 registration-card" data-id="<%= registration.id %>">
+<div class="card border-secondary mb-3 mx-3 registration-card" data-id="<%= registration.id %>" data-gender="<%= registration.user.gender %>" data-category="<%= registration.category %>">
   <div class="card-header d-flex justify-content-between">
-      <%= registration.user.first_name.capitalize %>
-      <%= registration.user.last_name.capitalize %>
+    <%= registration.user.first_name.capitalize %>
+    <%= registration.user.last_name.capitalize %>
+    <button type="button" class="badge badge-light zindex-modal user-modal" data-toggle="modal" data-target="#player_availabilities" style="height: 24px;">
+      <i class="fas fa-user-clock"></i>
+    </button>
   </div>
   <div class="card-body text-secondary">
     <span class="card-text"> Class. : <%= registration.user.ranking %></span>
@@ -9,5 +12,23 @@
     <span> Club : <%= registration.user.club.capitalize %></span>
     <br>
     <span> Cat. : #<%= registration.category %></span>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="player_availabilities" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Récapitulatif du joueur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <%= render "shared/player_availabilities_hover", registration: registration %>
+      </div>
+    </div>
   </div>
 </div>

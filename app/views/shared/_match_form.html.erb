@@ -1,15 +1,14 @@
-
-  <div>
+<div>
   <h4>Nouveau match</h4>
   <%= simple_form_for([@match]) do |f| %>
     <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-      <%= convocation.input :registration_id, label: "Joueur 1  ", collection: @registrations, id: 'convocation1' %>
+      <%= convocation.input :registration_id, label: "Joueurs", collection: @tournament.registrations, as: :select, id: 'convocation1' %>
     <% end %>
     <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-      <%= convocation.input :registration_id, label: "Joueur 2  ", collection: @registrations, id: 'convocation2' %>
+      <%= convocation.input :registration_id, label: false, collection: @tournament.registrations, id: 'convocation2' %>
     <% end %>
-    <div class="form-inputs">
-      <%= f.input :begin_at, label: "Date" %>
+    <div class="form-inputs datepicker-match">
+      <%= f.input :begin_at, label: "Date", input_html: { id:'match-time'}, as: :string %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Créer", class: "btn btn-outline-secondary"  %>

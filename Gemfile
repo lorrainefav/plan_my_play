@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'pg_search'
+gem 'jquery-rails'
 #gem 'rails-jquery-autocomplete'
 
 group :development do

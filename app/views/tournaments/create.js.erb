@@ -1,0 +1,10 @@
+<% if @tournament.errors.any? %>
+  // re render form
+  document.getElementById('new-tournament').innerHTML = "<%= j render 'form', tournament: @tournament %>";
+<% else %>
+  // close modal
+  closeBootstrapModal('#create_tournament');
+  // re render list of tournaments cards
+  document.getElementById('tournament-cards').insertAdjacentHTML('beforeend', "<%= j render 'tournaments/tournament', tournament: @tournament %>");
+
+<% end %>

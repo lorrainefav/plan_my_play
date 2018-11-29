@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if user.supervisor
       tournaments_path
     else
-      player_tournaments_path
+      player_convocations_path
     end
   end
 

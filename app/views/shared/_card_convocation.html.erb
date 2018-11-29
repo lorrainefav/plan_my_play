@@ -1,20 +1,24 @@
-<div class="card border-secondary mb-4">
+<div class="card border-secondary mb-4 pb-3" id="card-<%=convocation.id %>">
   <div class="card-header d-flex justify-content-between">
     <%= convocation.match.tournament.name %>
-      <% if convocation.status.to_s == "refused" %>
-      <i class="far fa-times-circle" style="color: red; font-size: 25px;"></i>
-      <% elsif convocation.status.to_s == "pending"  %>
-      <i class="far fa-clock" style="color: orange; font-size: 25px;"></i>
-      <% else %>
-      <i class="far fa-check-circle" style="color: green; font-size: 25px;"></i>
-      <% end %>
+    <% if convocation.status.to_s == "refused" %>
+      <i class="far fa-times-circle red-color size-icon"></i>
+    <% elsif convocation.status.to_s == "pending"  %>
+      <i class="far fa-clock orange-color size-icon"></i>
+    <% else %>
+      <i class="far fa-check-circle green-color size-icon"></i>
+    <% end %>
   </div>
   <div class="card-body text-secondary">
     <p class="card-text">Le <%= convocation.match.begin_at.strftime("%d/%m/%Y à %I:%M%p") %> </p>
+  </div>
+  <% if convocation.pending? %>
+  <div class="action-buttons">
+    <div class="d-flex justify-content-around">
+      <button type="button" class="btn btn-success btn-sm" id="accept_button"><%= link_to "J'accepte", accept_player_convocation_path(convocation), method: :post, remote: true %></button>
+      <button type="button" class="btn btn-danger btn-sm" id="refuse_button"><%= link_to "Je refuse", refuse_player_convocation_path(convocation), method: :post, remote: true %></button>
     </div>
-    <div class="card-footer d-flex justify-content-around">
-      <button type="button" class="btn btn-danger btn-sm"><%= link_to "Refuser", refuse_player_convocation_path(convocation), method: :post, remote: true %></button>
-      <button type="button" class="btn btn-success btn-sm"><%= link_to "Accepter", accept_player_convocation_path(convocation), method: :post, remote: true %></button>
-      </div>
+  </div>
+  <% end %>
 </div>
 
