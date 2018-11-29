@@ -1,4 +1,5 @@
 import "bootstrap";
+
 import "./search_city";
 import { initDatepickers } from './datepicker';
 initDatepickers();
@@ -10,3 +11,7 @@ import '../components/player_card'
 window.closeBootstrapModal = function (id) {
   $(id).modal('hide');
 }
+
+
+import * as dragula from 'dragula';
+dragula([].slice.call(document.querySelectorAll('.dropable')));

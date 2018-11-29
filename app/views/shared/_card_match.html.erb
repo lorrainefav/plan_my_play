@@ -1,24 +1,21 @@
-<div class="card mb-3" >
-  <div class="card-header" style="text-align: center;">
-    <%= match.begin_at.strftime("Le : %d - %m - %Y")%><%= match.begin_at.strftime(" à %I : %M %p")%>
-  </div>
+<div class="card h-100" >
   <% match.convocations.each do |convocation| %>
     <div class="card-body text-secondary" >
-        <p class="card-text">
-        <%= convocation.user.first_name %>
-        <%= convocation.user.last_name %>
-        <%= convocation.user.club %>
-        <%= convocation.user.ranking %>
-        <%= convocation.status %></p>
+      <div class="card-text">
+        <%= convocation.user.first_name %> <%= convocation.user.last_name %>
+        <% if convocation.refused? %>
+          <i class="far fa-times-circle red-color pl-2"></i>
+        <% elsif convocation.pending? %>
+          <i class="far fa-clock orange-color pl-2"></i>
+        <% elsif convocation.accepted?%>
+          <i class="far fa-check-circle green-color pl-2"></i>
+        <% elsif convocation.to_be_sent?%>
+          <i class="far fa-envelope orange-color pl-2"></i>
+        <% end %>
+      </div>
     </div>
   <% end %>
-  <div class="card-footer cm">
-    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#maj_match">
-      Mettre à jour
-    </button>
-  </div>
 </div>
-<!-- Button trigger modal -->
 
 
 <!-- Modal -->
