@@ -3,15 +3,32 @@
 
     <div class="d-flex flex-row-reverse">
       <div class="p-2">
-       <%= link_to "Nouveau Tournoi", new_tournament_path, class: "btn btn-outline-secondary"%>
+        <button type="button" class="btn btn-outline-secondary" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_tournament">
+          Nouveau Tournoi
+        </button>
       </div>
     </div>
 
-    <div class="row py-2">
-      <% @tournaments.each do |tournament| %>
-        <div class="col-xs-12 col-sm-4">
-          <%= render 'tournaments/tournament_card', { tournament: tournament } %>
-        </div>
-      <% end %>
+    <div class="row py-2" id="tournament-cards">
+      <%= render collection: @tournaments, partial: "tournaments/tournament" %>
     </div>
   </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="create_tournament" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New new new</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="new-tournament">
+        <%= render 'form', tournament: @tournament %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,13 +2,7 @@
   <div class="container py-5">
     <div class="row">
       <% @registrations.each do |registration| %>
-        <div class="col-xs-12 col-sm-4">
-
-
-          <%= render 'tournaments/tournament_card', { tournament: registration.tournament } %>
-
-
-        </div>
+        <%= render 'tournaments/tournament', { tournament: registration.tournament } %>
       <% end %>
     </div>
   </div>
