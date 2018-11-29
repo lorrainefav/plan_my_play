@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="card-body">
+    <div class="row">
+    <p> <%= registration.user.first_name %> <%= registration.user.last_name %> </p>
+    <p><%= registration.user.ranking %></p>
+    <p><%= registration.user.club %></p>
+    </div>
+    <p>Disponibilités :</p>
+    <ul>
+    <% registration.user.availabilities.each do |availability| %>
+    <div class="row">
+    <p><%= availability.begin_at.strftime("Le  %d-%m  ") %><%= availability.begin_at.strftime(" de %I:%M  ") %><%= availability.end_at.strftime("  à %I:%M") %></p>
+    </div>
+    <% end %>
+    </ul>
+  </div>
+</div>
