@@ -1,3 +1,4 @@
+
 class TournamentsController < ApplicationController
   before_action :set_tournaments, only: [:show, :edit, :update]
   def index
@@ -7,7 +8,6 @@ class TournamentsController < ApplicationController
 
   def show
    @match = Match.new
-   # @matches = @tournament.matches.where("begin_at=")
   end
 
   def new

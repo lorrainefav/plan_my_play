@@ -9,6 +9,8 @@ before_action :set_availability, only: [:update, :destroy]
 
   def create
     @availability = Availability.new(params_availability)
+    @availability.end_at = @availability.end_at.change(day: @availability.begin_at.day, month: @availability.begin_at.month, year: @availability.begin_at.year)
+
     @availability.user = current_user
     if @availability.save
       redirect_to player_availabilities_path

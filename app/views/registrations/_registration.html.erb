@@ -1,4 +1,4 @@
-<div class="card border-secondary mb-3">
+<div class="card border-secondary mb-3 mx-3 registration-card" data-id="<%= registration.id %>" data-gender="<%= registration.user.gender %>" data-category="<%= registration.category %>">
   <div class="card-header d-flex justify-content-between">
       <%= registration.user.first_name.capitalize %>
       <%= registration.user.last_name.capitalize %>
@@ -10,5 +10,4 @@
     <br>
     <span> Cat. : #<%= registration.category %></span>
   </div>
-  <div class="player" data-id="<%= registration.id %>"> Ajouter </div>
 </div>

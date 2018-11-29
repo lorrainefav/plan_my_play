@@ -1,15 +1,23 @@
-const cards = document.querySelectorAll(".player");
-const convocation0 = document.getElementById("match_convocations_attributes_0_registration_id")
-const convocation1 = document.getElementById("match_convocations_attributes_1_registration_id")
+const convocation0 = document.getElementById("match_convocations_attributes_0_registration_id");
+const convocation1 = document.getElementById("match_convocations_attributes_1_registration_id");
+const searchCategory = document.getElementById("search_category");
+const searchGenderMen = document.getElementById("search_gender_men");
+const searchGenderWomen = document.getElementById("search_gender_women");
+const searchSubmitButton = document.getElementById("submit_button");
 
-cards.forEach( (card) => {
-  card.addEventListener("click", (event) => {
-    if (convocation0.value === "") {
-      convocation0.value = card.dataset.id
-    } else {
-      convocation1.value = card.dataset.id
+$('#player-cards').on('click', '.registration-card', function(e) {
+  if (convocation0.value === "") {
+    convocation0.value = $(this).data('id');
+    searchCategory.value = $(this).data('category');
+    console.log($(this).data('gender'));
+    if ($(this).data('gender')==='men') {
+      searchGenderMen.checked = true;
     }
-    // console.log(card)
-    });
+    if ($(this).data('gender')==='women') {
+      searchGenderMen.checked = true;
+    }
+    searchSubmitButton.click();
+  } else {
+    convocation1.value = $(this).data('id');
   }
-)
+});
