@@ -6,6 +6,10 @@ const searchGenderWomen = document.getElementById("search_gender_women");
 const searchSubmitButton = document.getElementById("submit_button");
 
 $('#player-cards').on('click', '.registration-card', function(e) {
+
+  if ($(e.target.parentElement).hasClass('user-modal') || $(e.target).hasClass('user-modal')) {
+    return;
+  }
   if (convocation0.value === "") {
     convocation0.value = $(this).data('id');
     searchCategory.value = $(this).data('category');
