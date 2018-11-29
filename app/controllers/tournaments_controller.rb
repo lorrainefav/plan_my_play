@@ -1,3 +1,4 @@
+
 class TournamentsController < ApplicationController
   before_action :set_tournaments, only: [:show, :edit, :update]
   def index

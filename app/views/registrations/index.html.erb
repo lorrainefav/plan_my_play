@@ -1,29 +1,22 @@
-<div class="container">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Joueurs",  registrations_path(@tournament), class:"nav-link active" %>
-    </li>
-  </ul>
-</div>
-
-
-<div class="container-fluid py-2">
-  <h2 class='text-center'>Liste des inscrits à <%= @tournament.name %></h2>
+<%= render 'shared/tabs' %>
+<div class="container-fluid px-5">
+  <h2 class='text-center my-3'>Liste des inscrits à <%= @tournament.name %></h2>
   <div class="row">
-    <div class="col-md-2 filters-box">
-      <%= render 'filters', tournament: @tournament %>
+    <div class="col-md-2">
+      <div class="card px-2">
+        <%= render 'filters', tournament: @tournament %>
+      </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 ">
       <h2 id="no-players" class="d-none">Pas de joueurs pour ces critères</h2>
-      <div id="player-cards">
+      <div id="player-cards" class="justify-content-around">
         <%= render @registrations %>
       </div>
     </div>
     <div class="col-md-2">
-      <%= render 'shared/match_form' %>
+      <div class="card p-2">
+        <%= render 'shared/match_form' %>
+      </div>
     </div>
   </div>
 </div>

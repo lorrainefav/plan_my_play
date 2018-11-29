@@ -1,19 +1,34 @@
-<div class="navbar-wagon">
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+<% if user_signed_in? %>
+  <% if current_user.supervisor %>
+    <div class="container-fluid px-5">
+      <div class="col-md-8 offset-2">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <%= link_to "Joueurs", registrations_path(@tournament), class: tab_classes(registrations_path(@tournament)) %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Matches", tournament_path(@tournament), class: tab_classes(tournament_path(@tournament)) %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <% else %>
+    <div class="container">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <%= link_to "Mes convocations",  player_convocations_path, class: tab_classes(player_convocations_path) %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Mes tournois",  player_tournaments_path, class: tab_classes(player_tournaments_path) %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Mes disponibilités",  player_availabilities_path, class: tab_classes(player_availabilities_path) %>
+          </li>
+        </ul>
+    </div>
+  <% end %>
 
-    <% if user_signed_in? %>
-      <% if current_user.supervisor %>
-
-        <%= link_to "Tournois", tournaments_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <% else %>
-        <%= link_to "Mes disponibilités", player_tournaments_path, class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Mes convocations", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <% end %>
-
-    <% else %>
-      <h1>Mettre en transparence</h1>
-    <% end %>
-  </div>
-
-</div>
+<% else %>
+  <h1>Mettre en transparence</h1>
+<% end %>
 

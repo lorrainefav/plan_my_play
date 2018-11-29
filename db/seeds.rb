@@ -13,13 +13,8 @@ supervisor = User.create(
    password: "azerty",
    password_confirmation: "azerty",
    supervisor: true,
-<<<<<<< HEAD
-   last_name: "Yann",
-   first_name: "Grégoire@",
-=======
    last_name: "Grégoire",
    first_name: "Yann",
->>>>>>> e31e4893cf58d78b411f616156e1ef361784d166
    club: "le Haillan",
    licence: "9344054 E",
    gender: "men",
@@ -33,19 +28,11 @@ puts "Creating Tournaments"
 
 tournoi1 = Tournament.create(
   supervisor: supervisor,
-<<<<<<< HEAD
-  name: "Tournoi Play In Challenger",
-  city: "Lille",
-  courts_number: 8,
-  begin_at: "10/05/2018",
-  end_at: "25/05/2018"
-=======
   name: "Tournoi Adulte ASH",
   city: "Le Haillan",
   courts_number: 7,
   begin_at: "20/11/2018",
   end_at: "05/12/2018"
->>>>>>> e31e4893cf58d78b411f616156e1ef361784d166
   )
 
 tournoi2 = Tournament.create(
@@ -53,10 +40,6 @@ tournoi2 = Tournament.create(
   name: "Tournoi BNP Paribas Primerose",
   city: "Bordeaux",
   courts_number: 8,
-<<<<<<< HEAD
-  begin_at: "20/010/2018",
-  end_at: "07/11/2018"
-=======
   begin_at: "06/12/2018",
   end_at: "20/06/2018"
   )
@@ -68,7 +51,6 @@ tournoi3 = Tournament.create(
   courts_number: 4,
   begin_at: "10/03/2019",
   end_at: "25/03/2019"
->>>>>>> e31e4893cf58d78b411f616156e1ef361784d166
   )
 tournoi4 = Tournament.create(
   supervisor: supervisor,
@@ -95,13 +77,8 @@ gauthier = User.create(
 )
 puts "Creating player's inscription"
 inscription1 = Registration.create(
-<<<<<<< HEAD
-  user: durand,
-  tournament: tournoi2,
-=======
   user: gauthier,
   tournament: tournoi1,
->>>>>>> e31e4893cf58d78b411f616156e1ef361784d166
   category: "Senior"
 )
 
@@ -141,9 +118,9 @@ CSV.foreach(filepath, csv_options) do |row|
    password: "azerty",
    password_confirmation: "azerty",
    supervisor: false,
-   last_name: row['Gautier'],
-   first_name: row['Valin'],
-   club: row['Club'],
+   last_name: row['Nom'].capitalize,
+   first_name: row['Prénom'].capitalize,
+   club: row['Club'].capitalize,
    licence: row['Licence'],
    gender: gender,
    phone_number: row['Tél. Mob.'],
