@@ -1,9 +1,9 @@
 <%= render 'shared/tabs' %>
-<div class="container-fluid px-5">
+<div class="container-fluid px-5 py-4">
   <div class="row">
     <div class="col-md-10 court" style="text-align: center;">
-      <h2>Les Matchs du jour</h2>
-      <p><%= Date.today.strftime("Le : %d.%m.%Y") %></p>
+      <h4>Les Matchs du jour</h4>
+      <h5><%= Date.today.strftime("Le : %d.%m.%Y") %></h5>
       <% @tournament.matches.order(created_at: :desc).each do |match| %>
         <% if match.begin_at.to_date == Date.today %>
           <%= render "shared/card_match", match: match %>
@@ -11,7 +11,7 @@
       <% end %>
     </div>
     <div class="col-md-2">
-      <h2><%= @tournament.name %></h2>
+      <h4><%= @tournament.name %></h4>
           <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success" %>
         <button type="button" class="btn btn-outline-secondary" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_match">
           Nouveau match

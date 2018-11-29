@@ -1,4 +1,4 @@
-<h3>Filtres</h3>
+<h4>Filtres</h4>
 <div>
   <%= simple_form_for(:search, url: registrations_path, method: :get, remote:true) do |form| %>
     <%= form.input :query, label: false, placeholder: "Nom ou prénom", input_html: {onkeyup: 'Rails.fire(this.form,"submit")'} %>
