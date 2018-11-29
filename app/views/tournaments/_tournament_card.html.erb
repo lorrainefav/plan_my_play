@@ -7,7 +7,7 @@
     <p class="card-text"><%= tournament.city %></p>
     <p class="card-date">Du <%= tournament.begin_at.strftime("%d/%m/%Y") %> au <%= tournament.end_at.strftime("%d/%m/%Y") %></p>
     <% if current_user.supervisor  %>
-      <%= link_to "Gestion des matchs", tournament_path(tournament), class: "btn btn-outline-secondary btn-block"%>
+      <%= link_to "Gestion des matchs", registrations_path(tournament), class: "btn btn-outline-secondary btn-block"%>
       <%= link_to "Modifier", edit_tournament_path(tournament), class: "btn btn-outline-secondary btn-block"%>
       <% end  %>
   </div>

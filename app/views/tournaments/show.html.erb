@@ -1,16 +1,7 @@
-<div class="container">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <%= link_to "Matchs",  tournament_path(@tournament), class:"nav-link active" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Joueurs",  registrations_path(@tournament), class:"nav-link" %>
-      </li>
-    </ul>
-</div>
-<div class="container-fluid">
+<%= render 'shared/tabs' %>
+<div class="container-fluid px-5">
   <div class="row">
-    <div class="col sm-9 court" style="text-align: center;">
+    <div class="col-md-10 court" style="text-align: center;">
       <h2>Les Matchs du jour</h2>
       <p><%= Date.today.strftime("Le : %d.%m.%Y") %></p>
       <% @tournament.matches.order(created_at: :desc).each do |match| %>
@@ -19,7 +10,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-sm-3">
+    <div class="col-md-2">
       <h2><%= @tournament.name %></h2>
           <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success" %>
         <button type="button" class="btn btn-outline-secondary" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_match">
@@ -43,20 +34,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for([@match]) do |f| %>
-          <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-            <%= convocation.input :registration_id, label: "Joueur 1  ", collection: @tournament.registrations %>
-          <% end %>
-          <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
-            <%= convocation.input :registration_id, label: "Joueur 2  ", collection: @tournament.registrations %>
-          <% end %>
-          <div class="form-inputs">
-            <%= f.input :begin_at, label: "Date" %>
-          </div>
-          <div class="form-actions">
-            <%= f.submit "Créer", class: "btn btn-outline-secondary" %>
-          </div>
-        <% end %>
+        <%= render 'shared/match_form' %>
       </div>
     </div>
   </div>
