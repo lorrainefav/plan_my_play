@@ -1,5 +1,5 @@
 <div class="container datepicker">
-  <%= simple_form_for @tournament do |form|%>
+  <%= simple_form_for tournament, remote: true do |form|%>
     <%= form.input :name, label: "Nom" %>
     <%= form.input :city, input_html: {id:'city_form', class: "autocomplete"}, label: "Ville", as: :string %>
     <%= form.input :courts_number, label: "Nombre de courts" %>
