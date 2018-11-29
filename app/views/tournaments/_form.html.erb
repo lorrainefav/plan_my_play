@@ -1,12 +1,18 @@
 <div class="container datepicker">
+  <h3> Nouveau tournoi</h3>
   <%= simple_form_for @tournament do |form|%>
     <%= form.input :name %>
     <%= form.input :city, input_html: {id:'city_form', class: "autocomplete"}, as: :string %>
     <%= form.input :courts_number %>
     <%= form.input :begin_at, input_html: { id:'start_date' }, as: :string %>
     <%= form.input :end_at, input_html: { id:'end_date'}, as: :string %>
+<<<<<<< HEAD
     <%= form.submit %>
   <% end %>
+=======
+    <%= form.submit "Créer"%>
+    <% end %>
+>>>>>>> e31e4893cf58d78b411f616156e1ef361784d166
 </div>
 
 

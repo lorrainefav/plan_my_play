@@ -1,8 +1,8 @@
 // app/javascript/packs/map.js
-import 'mapbox-gl/dist/mapbox-gl.css'
+// import 'mapbox-gl/dist/mapbox-gl.css'
 // ADD THIS LINE 👇 (styling)
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
+// import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 // ADD THIS LINE 👇 (js)
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 // [ ... ]

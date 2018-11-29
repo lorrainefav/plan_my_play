@@ -7,7 +7,6 @@ class TournamentsController < ApplicationController
 
   def show
    @match = Match.new
-   # @matches = @tournament.matches.where("begin_at=")
   end
 
   def new
