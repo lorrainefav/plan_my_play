@@ -2,12 +2,12 @@
   <div class="card-header d-flex justify-content-between">
     <%= registration.user.first_name.capitalize %>
     <%= registration.user.last_name.capitalize %>
-    <button type="button" class="badge badge-light zindex-modal user-modal" data-toggle="modal" data-target="#player_availabilities" style="height: 24px;">
+    <button type="button" class="badge badge-light zindex-modal user-modal" data-toggle="modal" data-target="#player_availabilities-<%= registration.id %>" style="height: 24px;">
       <i class="fas fa-user-clock"></i>
     </button>
   </div>
   <div class="card-body text-secondary">
-    <span class="card-text"> Class. : <%= registration.user.ranking %></span>
+    <span > Class. : <%= registration.user.ranking %></span>
     <br>
     <span> Club : <%= registration.user.club.capitalize %></span>
     <br>
@@ -17,7 +17,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="player_availabilities" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="player_availabilities-<%= registration.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">

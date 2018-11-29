@@ -1,19 +1,19 @@
 <div class="container">
-    <div class="row" style="justify-content: space-between;">
-    <p> <%= registration.user.first_name %> <%= registration.user.last_name %> </p>
+  <div class="row" style="justify-content: space-between;">
+    <p><%= registration.user.first_name %> <%= registration.user.last_name %> </p>
     <p><%= registration.user.club %></p>
     <p><%= registration.user.ranking %></p>
-    </div>
-    <% if registration.user.availabilities.empty? %>
+  </div>
+  <% if registration.user.availabilities.empty? %>
     <p>Aucune disponibilité pour ce joueur</p>
-      <% else %>
-      <p>Disponibilités :</p>
-      <ul>
+  <% else %>
+    <p>Disponibilités :</p>
+    <ul>
     <% registration.user.availabilities.each do |availability| %>
-    <div class="row" style="justify-content: center;">
-    <p><%= availability.begin_at.strftime("Le  %d-%m  ") %><%= availability.begin_at.strftime(" de %I:%M  ") %><%= availability.end_at.strftime("  à %I:%M") %></p>
-    </div>
-    <% end %>
+      <div class="row" style="justify-content: center;">
+        <p><%= availability.begin_at.strftime("Le  %d-%m  ") %><%= availability.begin_at.strftime(" de %I:%M  ") %><%= availability.end_at.strftime("  à %I:%M") %></p>
+      </div>
     <% end %>
     </ul>
+  <% end %>
 </div>
