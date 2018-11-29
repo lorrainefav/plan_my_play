@@ -5,7 +5,10 @@
     <%= form.input :courts_number, label: "Nombre de courts" %>
     <%= form.input :begin_at, input_html: { id:'start_date' }, label: "Début", as: :string %>
     <%= form.input :end_at, input_html: { id:'end_date'}, label: "Fin", as: :string %>
-    <%= form.submit "Valider", method: :post, class: "btn btn-outline-secondary" %>
+      <label class="btn btn-outline-dark btn-file">
+        Importer <input type="file" style="display: none;">
+      </label>
+      <%= form.submit "Valider", method: :post, class: "btn btn-outline-dark" %>
   <% end %>
 </div>
 
