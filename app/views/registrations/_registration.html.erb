@@ -1,7 +1,12 @@
 <div class="card border-secondary mb-3 mx-3 registration-card" data-id="<%= registration.id %>" data-gender="<%= registration.user.gender %>" data-category="<%= registration.category %>">
   <div class="card-header d-flex justify-content-between">
-    <%= registration.user.first_name.capitalize %>
+    <% if registration.user.gender.to_s == "men" %>
+  Mr  <%= registration.user.first_name.capitalize %>
     <%= registration.user.last_name.capitalize %>
+    <% else %>
+    Mme <%= registration.user.first_name.capitalize %>
+      <%= registration.user.last_name.capitalize %>
+      <% end %>
     <button type="button" class="badge badge-light zindex-modal user-modal" data-toggle="modal" data-target="#player_availabilities" style="height: 24px;">
       <i class="fas fa-user-clock"></i>
     </button>
