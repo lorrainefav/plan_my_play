@@ -2,7 +2,6 @@ import flatpickr from "flatpickr";
 import 'flatpickr/dist/flatpickr.min.css';
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
-
 function initDatepickers() {
 
   const datepickers = document.querySelectorAll(".datepicker")
@@ -22,7 +21,6 @@ function initDatepickers() {
   })
 
   const matchDateElement = document.querySelector('#match-time');
-
   if (matchDateElement) {
     flatpickr(matchDateElement, {
       minDate: "today",

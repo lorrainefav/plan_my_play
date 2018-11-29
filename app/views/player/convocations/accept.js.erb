@@ -1,0 +1,10 @@
+var convocationCard = document.getElementById("card-<%=@convocation.id %>");
+var iconCard = convocationCard.querySelector(".far");
+var actionButtons = convocationCard.querySelector(".action-buttons");
+
+iconCard.classList ="";
+iconCard.classList.add("far", "fa-check-circle", "green-color","size-icon");
+actionButtons.classList.add("d-none");
+
+
+

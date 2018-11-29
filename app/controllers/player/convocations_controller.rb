@@ -4,7 +4,12 @@ class Player::ConvocationsController < ApplicationController
 
   def index
     @user = current_user
-    @convocations = @user.convocations
+    @pending_convocations = @user.convocations.pending_ones
+    @current_convocations = @user.convocations.current_ones
+    respond_to do |format|
+        format.html
+        format.js
+    end
   end
 
   def accept

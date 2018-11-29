@@ -1,15 +1,13 @@
 
-  <div class="container py-4">
+  <div class="container py-2">
 
     <div class="d-flex flex-row-reverse">
-      <div class="p-2"></div>
       <div class="p-2">
         <button type="button" class="btn btn-outline-secondary" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_tournament">
           Nouveau Tournoi
         </button>
       </div>
     </div>
-
 
     <div class="row py-2" id="tournament-cards">
       <%= render collection: @tournaments, partial: "tournaments/tournament" %>
