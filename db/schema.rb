@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_26_142052) do
+ActiveRecord::Schema.define(version: 2018_11_29_130157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_142052) do
     t.integer "match_duration", default: 90
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo_url"
     t.index ["supervisor_id"], name: "index_tournaments_on_supervisor_id"
   end
 
