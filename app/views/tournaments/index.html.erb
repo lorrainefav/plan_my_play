@@ -1,13 +1,11 @@
 
-  <div class="container py-4">
+  <div class="container py-2">
 
     <div class="d-flex flex-row-reverse">
-      <div class="p-2"></div>
       <div class="p-2">
        <%= link_to "Nouveau Tournoi", new_tournament_path, class: "btn btn-outline-secondary"%>
       </div>
     </div>
-
 
     <div class="row py-2">
       <% @tournaments.each do |tournament| %>

@@ -1,16 +1,5 @@
-<div class="container">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <%= link_to "Mes convocations",  player_convocations_path, class:"nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Mes disponibilités",  player_availabilities_path, class:"nav-link" %>
-      </li>
-    </ul>
-</div>
-
-
-  <div class="container py-2">
+<%= render 'shared/tabs' %>
+  <div class="container py-5">
     <div class="row">
       <% @registrations.each do |registration| %>
         <div class="col-xs-12 col-sm-4">

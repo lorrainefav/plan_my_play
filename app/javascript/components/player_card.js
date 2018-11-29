@@ -14,7 +14,7 @@ $('#player-cards').on('click', '.registration-card', function(e) {
       searchGenderMen.checked = true;
     }
     if ($(this).data('gender')==='women') {
-      searchGenderMen.checked = true;
+      searchGenderWomen.checked = true;
     }
     searchSubmitButton.click();
   } else {
