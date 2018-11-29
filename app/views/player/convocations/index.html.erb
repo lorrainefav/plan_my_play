@@ -2,7 +2,7 @@
 <div class="container py-5">
     <div class="row">
       <% if @pending_convocations.any? %>
-        <h4>Convocations en attente de réponse</h4>
+        <h4 class="px-3">Convocations en attente de réponse</h4>
       <% else %>
         <h4>Aucune convocation en attente de réponse</h4>
       <% end %>
@@ -13,13 +13,13 @@
       <% end %>
     </div>
     <div class="row">
-      <p>****</p>
+      <p class="px-3>****</p>
     </div>
     <div class="row">
       <% if @current_convocations.any? %>
-        <h4>Matchs à venir</h4>
+        <h4 class="px-3">Matchs à venir</h4>
       <% else %>
-        <h4>Aucun match prochainement</h4>
+        <h4 class="px-3">Aucun match prochainement</h4>
       <% end %>
     </div>
     <div class="row d-flex justify-content-around" id="current-convocations">

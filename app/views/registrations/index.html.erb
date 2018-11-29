@@ -1,6 +1,6 @@
 <%= render 'shared/tabs' %>
 <div class="container-fluid px-5">
-  <h2 class='text-center my-3'>Liste des inscrits à <%= @tournament.name %></h2>
+  <h4 class='text-center my-3'>- Liste des inscrits au <%= @tournament.name %> -</h4>
   <div class="row">
     <div class="col-md-2">
       <div class="card px-2">
@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="col-md-8 ">
-      <h2 id="no-players" class="d-none">Pas de joueurs pour ces critères</h2>
+      <p id="no-players" class="d-none py-4">Pas de joueurs pour ces critères</p>
       <div id="player-cards" class="justify-content-around">
         <%= render @registrations %>
       </div>

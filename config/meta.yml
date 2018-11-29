@@ -1,0 +1,5 @@
+meta_product_name: "Plan my Play"
+meta_title: "Plan my Play - A Tennis Tournament Plannification App"
+meta_description: "Play my Play helps Tournament Supervisors to manage plannification issues and player notifications"
+meta_image: "tennis-ball.png"                       # should exist in `app/assets/images/`
+twitter_account: "@planmyplay"   # required for Twitter Cards

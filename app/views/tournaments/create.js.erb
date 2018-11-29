@@ -4,7 +4,7 @@
 <% else %>
   // close modal
   closeBootstrapModal('#create_tournament');
+  document.getElementById('flashes').innerHTML = '<%= j render "shared/flashes" %>'
   // re render list of tournaments cards
   document.getElementById('tournament-cards').insertAdjacentHTML('beforeend', "<%= j render 'tournaments/tournament', tournament: @tournament %>");
-
 <% end %>

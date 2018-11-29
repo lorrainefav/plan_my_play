@@ -8,6 +8,7 @@ class MatchesController < ApplicationController
     @tournament = Tournament.find(params[:id])
     @match = @tournament.matches.new(match_params)
     if @match.save
+      flash[:notice] = "Nouveau match créé !"
       redirect_to @tournament
     else
       render 'tournaments/show'
