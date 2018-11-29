@@ -1,4 +1,17 @@
 .card-text {
   opacity: 0.6;
 }
-
+.card.px-2 {
+  background-color: #033C69;
+  color: white;
+  border-radius: 7px;
+  .btn.btn.btn-outline-secondary{
+  color: white;
+  margin: 5px;
+  background-color: #F7F7F3;
+  color: black;
+  }
+  h4 {
+    color: white;
+  }
+}
