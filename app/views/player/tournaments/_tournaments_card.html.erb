@@ -1,0 +1,11 @@
+<div class="col-xs-12 col-sm-4">
+  <div class="card mb-2" style="width: 18rem; align-items: center;">
+    <%= image_tag registration.tournament.photo_url, id: "logo", width:250, height: 250, class: "pt-2" %>
+    <div class="card-body">
+      <h5 class="card-title"><%= registration.tournament.name %></h5>
+      <p class="card-title">à <%= registration.tournament.city %></p>
+      <p class="card-title">Catégorie : #<%= registration.category %></p>
+      <p class="card-date">Du <%= registration.tournament.begin_at.strftime("%d/%m/%Y") %> au <%= registration.tournament.end_at.strftime("%d/%m/%Y") %></p>
+    </div>
+  </div>
+</div>

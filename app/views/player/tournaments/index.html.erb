@@ -1,8 +1,8 @@
 <%= render 'shared/tabs' %>
   <div class="container py-5">
     <div class="row">
-      <% @registrations.each do |registration| %>
-        <%= render 'tournaments/tournament', { tournament: registration.tournament } %>
+      <% @registrations.order(created_at: :desc).each do |registration| %>
+        <%= render 'tournaments_card', { registration: registration } %>
       <% end %>
     </div>
   </div>
