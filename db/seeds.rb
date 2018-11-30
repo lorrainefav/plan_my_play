@@ -24,8 +24,6 @@ supervisor = User.create(
 
 
 puts "Creating Tournaments"
-
-
 tournoi1 = Tournament.create(
   supervisor: supervisor,
   name: "Tournoi Adulte ASH",

@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="col-md-2">
-        <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success btn-block" %>
+        <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament, date: params[:date]), method: :post, class: "btn btn-outline-success btn-block" %>
         <button type="button" class="btn btn-outline-secondary btn-block" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_match">Nouveau match
         </button>
         <div class="border-light shadow">
