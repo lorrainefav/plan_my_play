@@ -155,6 +155,7 @@ puts "Creating matches at 30/11"
     registration: Registration.all.sample,
     match: match,
     status: 'accepted'
+    )
 end
 
 3.times do
