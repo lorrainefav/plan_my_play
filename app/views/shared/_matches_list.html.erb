@@ -1,0 +1,5 @@
+<div class="card shadow my-3">
+  <% @tournament.matches.for_index.order(created_at: :desc).each do |match| %>
+    <%= render "shared/card_match", match: match %>
+  <% end %>
+</div>

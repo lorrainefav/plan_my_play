@@ -3,7 +3,7 @@
   <%= simple_form_for(:search, url: registrations_path, method: :get, remote:true) do |form| %>
     <%= form.input :query, label: false, placeholder: "Nom ou prénom", input_html: {onkeyup: 'Rails.fire(this.form,"submit")'} %>
     <%= form.input :category, collection: Registration::CATEGORIES, label: 'Catégorie', input_html: {onchange: 'Rails.fire(this.form,"submit")'} %>
-    <%= form.input :gender , as: :radio_buttons, collection: User::GENDERS, label: false, input_html: {onchange: 'Rails.fire(this.form,"submit")'} %>
+    <%= form.input :gender , as: :radio_buttons, collection: User::GENDERS, label: 'Sexe', input_html: {onchange: 'Rails.fire(this.form,"submit")'} %>
     <%= form.input :registration_ranking, collection: Registration::RANKING, label: 'Classement', input_html: {onchange: 'Rails.fire(this.form,"submit")'}%>
     <%= form.submit 'Filtrer', id: 'submit_button', class: 'd-none' %>
   <% end %>

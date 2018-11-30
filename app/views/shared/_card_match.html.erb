@@ -1,7 +1,7 @@
-<div class="card h-100" data-match-id="<%= match.id %>" >
+<div class="card w-100 my-1" data-match-id="<%= match.id %>" id="card-<%= match.id %>" >
   <% match.convocations.each do |convocation| %>
     <div class="card-body text-secondary" >
-      <div class="card-text">
+      <div class="card-text d-flex justify-content-between">
         <%= convocation.user.first_name %> <%= convocation.user.last_name %>
         <% if convocation.refused? %>
           <i class="far fa-times-circle red-color pl-2"></i>

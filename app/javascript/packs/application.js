@@ -21,6 +21,7 @@ drake.on('drop', function(el,target){
   let court = target.dataset.court;
   let data = new FormData();
   let url = '/matches/' + matchId;
+  // debugger
   data.append('match[begin_at]', date);
   data.append('match[court]', court);
   Rails.ajax({
