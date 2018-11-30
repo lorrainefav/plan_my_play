@@ -1,8 +1,9 @@
 <div class="card w-100 my-1" data-match-id="<%= match.id %>" id="card-<%= match.id %>" >
+  <div class="card-text"></div>
   <% match.convocations.each do |convocation| %>
     <div class="card-body text-secondary" >
       <div class="card-text d-flex justify-content-between">
-        <%= convocation.user.first_name %> <%= convocation.user.last_name %>
+        <%= convocation.user.first_name %> <%= convocation.user.last_name %> (#<%= convocation.registration.category.first(3) %>)
         <% if convocation.refused? %>
           <i class="far fa-times-circle red-color pl-2"></i>
         <% elsif convocation.pending? %>
