@@ -4,6 +4,7 @@ const searchCategory = document.getElementById("search_category");
 const searchGenderMen = document.getElementById("search_gender_men");
 const searchGenderWomen = document.getElementById("search_gender_women");
 const searchSubmitButton = document.getElementById("submit_button");
+const searchQuery = document.getElementById("search_query");
 
 $('#player-cards').on('click', '.registration-card', function(e) {
 
@@ -13,7 +14,7 @@ $('#player-cards').on('click', '.registration-card', function(e) {
   if (convocation0.value === "") {
     convocation0.value = $(this).data('id');
     searchCategory.value = $(this).data('category');
-    // console.log($(this).data('gender'));
+    searchQuery.value = "";
     if ($(this).data('gender')==='men') {
       searchGenderMen.checked = true;
     }
