@@ -30,7 +30,7 @@ tournoi1 = Tournament.create(
   supervisor: supervisor,
   name: "Tournoi Adulte ASH",
   city: "Le Haillan",
-  courts_number: 7,
+  courts_number: 5,
   begin_at: "20/11/2018",
   end_at: "05/12/2018",
   photo_url: "Tournoi1.jpg"
@@ -139,10 +139,61 @@ CSV.foreach(filepath, csv_options) do |row|
 end
 puts ""
 
-5.times do
+puts "Creating matches at 30/11"
+3.times do
   match = Match.create(
     tournament: tournoi1,
-    begin_at: "28/11/2018 15:00"
+    begin_at: "30/11/2018 11:00"
+    )
+
+  Convocation.create(
+  registration: Registration.all.sample,
+  match: match,
+  status: 'accepted'
+  )
+  Convocation.create(
+    registration: Registration.all.sample,
+    match: match,
+    status: 'accepted'
+3.times do
+  match = Match.create(
+    tournament: tournoi1,
+    begin_at: "30/11/2018 15:00"
+    )
+
+  Convocation.create(
+  registration: Registration.all.sample,
+  match: match,
+  status: 'accepted'
+  )
+  Convocation.create(
+    registration: Registration.all.sample,
+    match: match,
+    status: 'accepted'
+  )
+end
+3.times do
+  match = Match.create(
+    tournament: tournoi1,
+    begin_at: "30/11/2018 17:00"
+    )
+
+  Convocation.create(
+  registration: Registration.all.sample,
+  match: match,
+  status: 'accepted'
+  )
+  Convocation.create(
+    registration: Registration.all.sample,
+    match: match,
+    status: 'accepted'
+  )
+end
+puts "Creating matches at 01/12"
+2.times do
+  match = Match.create(
+    tournament: tournoi1,
+    begin_at: "01/12/2018 18:00"
     )
 
   Convocation.create(
@@ -156,17 +207,16 @@ puts ""
     status: 'pending'
   )
 end
-
-5.times do
+2.times do
   match = Match.create(
     tournament: tournoi1,
-    begin_at: "28/11/2018 18:00"
+    begin_at: "01/12/2018 16:00"
     )
 
   Convocation.create(
   registration: Registration.all.sample,
   match: match,
-  status: 'pending'
+  status: 'refused'
   )
   Convocation.create(
     registration: Registration.all.sample,
@@ -175,22 +225,5 @@ end
   )
 end
 
-5.times do
-  match = Match.create(
-    tournament: tournoi1,
-    begin_at: "28/11/2018 20:00"
-    )
-
-  Convocation.create(
-  registration: Registration.all.sample,
-  match: match,
-  status: 'pending'
-  )
-  Convocation.create(
-    registration: Registration.all.sample,
-    match: match,
-    status: 'pending'
-  )
-end
 puts "Seeds done!"
 puts "-"*20
