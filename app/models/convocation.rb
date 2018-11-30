@@ -9,5 +9,5 @@ class Convocation < ApplicationRecord
   #validates :match_id, presence: true
 
   scope :pending_ones, -> { where(status: :pending) }
-  scope :current_ones, -> { joins(:match).where("matches.begin_at >= ?", DateTime.now)}
+  scope :current_ones, -> { joins(:match).where("matches.begin_at >= ?", DateTime.now).where.not(status: :pending)}
 end
