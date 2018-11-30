@@ -2,22 +2,27 @@
 <%= render 'shared/flashes' %>
 
 <div class="container py-4">
-  <div class="newdispo">
-    <h4 >Ajouter un nouveau créneau</h4>
+  <div class="row  border-dark border-bottom">
+    <div class="newdispo">
+      <h4 >Ajouter un nouveau créneau</h4>
+    </div>
+  </div>
+  <div class="row my-3">
     <%= simple_form_for [:player, @availability], wrapper: :inline_form, html: { class: 'form-inline my-3' }  do |f| %>
       <%= f.input_field :begin_at, class: "form-control mx-2" %> jusqu'à
       <%= f.input_field :end_at, discard_day: true, discard_month: true, discard_year: true, class: "form-control mx-2" %>
       <%= f.submit "Créer", class: "btn btn-outline-secondary" %>
     <% end %>
   </div>
-  <div class="listedispo py-5">
+  <div class="row border-dark border-bottom">
     <h4>Liste de mes disponibilités à venir</h4>
+  </div>
+  <div class="listedispo py-5">
     <% if @availabilities.empty? %>
-      <div class="pt-5 ">
+      <div class="pt-3 ">
         N'ayant pas précisé vos disponibilités, le juge arbitre peut vous convoquer à toute heure de la journée !
       </div>
     <% else %>
-
       <div class="container">
         <% @availabilities.each do |availability| %>
           <div class="row justify-content-center py-2">

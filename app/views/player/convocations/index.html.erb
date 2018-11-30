@@ -7,7 +7,7 @@
         <h4 class="px-3 my-3">Aucune convocation en attente de réponse</h4>
       <% end %>
     </div>
-    <div class="row d-flex justify-content-around mt-3" id="pending-convocations">
+    <div class="row d-flex justify-content-left mt-3" id="pending-convocations">
       <% @pending_convocations.order(created_at: :desc).each do |pending_convocation| %>
         <%=  render "shared/card_convocation", convocation: pending_convocation %>
       <% end %>
