@@ -9,15 +9,26 @@ class MatchesController < ApplicationController
     @match = @tournament.matches.new(match_params)
     if @match.save
       flash[:notice] = "Nouveau match créé !"
-      redirect_to @tournament
+      redirect_to registrations_path
     else
-      render 'tournaments/show'
+      render registrations_path
     end
   end
 
   def update
+    # byebug
+    params[:match][:begin_at] = nil if params[:match][:begin_at] == "undefined"
+    params[:match][:court] = nil if params[:match][:court] == "undefined"
     @match.update(match_params)
-    redirect_to tournament_path(@match.tournament)
+    @match.convocations.each do |convocation|
+      convocation.to_be_sent!
+      convocation.save
+    end
+    respond_to do |format|
+      # format.html{redirect_to tournament_path(@match.tournament)}
+      format.js{head :ok}
+    end
+
   end
 
   def destroy
@@ -33,7 +44,7 @@ class MatchesController < ApplicationController
   end
 
   def match_params
-    params.require(:match).permit(:begin_at, convocations_attributes: [:registration_id])
+    params.require(:match).permit(:begin_at, :court, convocations_attributes: [:registration_id])
   end
 
   # def convocation_params

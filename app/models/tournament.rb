@@ -13,7 +13,7 @@ class Tournament < ApplicationRecord
 
   def send_convocations
     self.convocations.each do |convocation|
-      convocation.pending! if convocation.to_be_sent?
+      convocation.pending! if convocation.to_be_sent? && !convocation.match.begin_at.nil? && !convocation.match.begin_at.nil?
     end
   end
 end

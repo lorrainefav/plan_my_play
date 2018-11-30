@@ -3,7 +3,7 @@
   <h4 class='text-center my-3'>- Liste des inscrits au <%= @tournament.name %> -</h4>
   <div class="row">
     <div class="col-md-2">
-      <div class="card px-2">
+      <div class="card px-2 shadow">
         <%= render 'filters', tournament: @tournament %>
       </div>
     </div>
@@ -14,8 +14,11 @@
       </div>
     </div>
     <div class="col-md-2">
-      <div class="card px-2">
+      <div class="card px-1 py-2 border-light shadow rounded">
         <%= render 'shared/match_form' %>
+      </div>
+      <div>
+        <%= render 'shared/matches_list' %>
       </div>
     </div>
   </div>

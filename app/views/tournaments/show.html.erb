@@ -1,28 +1,56 @@
 <%= render 'shared/tabs' %>
-<div class="container-fluid px-5 py-4">
-  <div class="row">
-    <div class="col-md-10 court" style="text-align: center;">
-      <h4>Les Matchs du jour</h4>
-      <h5><%= Date.today.strftime("Le : %d.%m.%Y") %></h5>
-      <% @tournament.matches.order(created_at: :desc).each do |match| %>
-        <% if match.begin_at.to_date == Date.today %>
-          <%= render "shared/card_match", match: match %>
-        <% end %>
-      <% end %>
+<div class="container-fluid px-5">
+    <div class="text-center py-3">
+      <h2><%= @tournament.name %> / Matchs du jour</h2>
     </div>
-    <div class="col-md-2">
-      <h4><%= @tournament.name %></h4>
-          <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success" %>
-        <button type="button" class="btn btn-outline-secondary" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_match">
-          Nouveau match
-        </button>
-        <% @tournament.matches.order(created_at: :desc).each do |match| %>
-          <%= render "shared/card_match", match: match %>
-        <% end %>
-      </div>
+    <div class="d-flex justify-content-center align-items-center mb-3">
+      <%= link_to "Précédent  <  ", tournament_path(@tournament, date: @date - 1.days), class: 'text-secondary mr-5'%>
+      <h3> <%= @date.strftime("%d.%m.%Y") %></h3>
+      <%= link_to "  >  Suivant", tournament_path(@tournament, date: @date + 1.days), class: 'text-secondary ml-5' %>
     </div>
-</div>
 
+    <div class="row">
+      <div class="col-md-10">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-2"></div>
+            <% (1..5).each do |col| %>
+              <div class="col-2 text-center">
+                Court <%= col %>
+              </div>
+            <% end %>
+          </div>
+          <% (9..22).each do |hour|%>
+            <div class="row" style="border-top: 1px solid #CCC; height:80px">
+              <div class="col-2">
+                <%= hour %>:00
+              </div>
+              <% (1..5).each do |court| %>
+                <div class="col-2 dropable" data-date="<%= @date.change(hour: hour) %>" data-court=<%= court %>>
+                  <% @tournament.matches.where(court:court, begin_at: @date.change(hour: hour)).each do |match| %>
+                    <%= render "shared/card_match", match: match %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <%= link_to "Envoyer les convocations", convocations_grouped_send_tournament_path(@tournament), method: :post, class: "btn btn-outline-success btn-block" %>
+        <button type="button" class="btn btn-outline-secondary btn-block" style="margin-top: 25px; margin-bottom: 25px" data-toggle="modal" data-target="#create_match">Nouveau match
+        </button>
+        <div class="border-light shadow">
+        <div class="dropable">
+          <p class="text-center">-Matchs à placer-<p>
+            <% @tournament.matches.for_index.order(created_at: :desc).each do |match| %>
+              <%= render "shared/card_match", match: match %>
+            <% end %>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="create_match" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

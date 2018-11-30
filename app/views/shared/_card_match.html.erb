@@ -1,24 +1,21 @@
-<div class="card mb-3" style="margin: 25px;">
-  <div class="card-header" style="text-align: center;">
-    <%= match.begin_at.strftime("Le : %d - %m - %Y")%><%= match.begin_at.strftime(" à %I : %M %p")%>
-  </div>
+<div class="card w-100 my-1" data-match-id="<%= match.id %>" id="card-<%= match.id %>" >
   <% match.convocations.each do |convocation| %>
     <div class="card-body text-secondary" >
-        <p class="card-text">
-        <%= convocation.user.first_name %>
-        <%= convocation.user.last_name %>
-        <%= convocation.user.club %>
-        <%= convocation.user.ranking %>
-        <%= convocation.status %></p>
+      <div class="card-text d-flex justify-content-between">
+        <%= convocation.user.first_name %> <%= convocation.user.last_name %>
+        <% if convocation.refused? %>
+          <i class="far fa-times-circle red-color pl-2"></i>
+        <% elsif convocation.pending? %>
+          <i class="far fa-clock orange-color pl-2"></i>
+        <% elsif convocation.accepted?%>
+          <i class="far fa-check-circle green-color pl-2"></i>
+        <% elsif convocation.to_be_sent?%>
+          <i class="far fa-envelope orange-color pl-2"></i>
+        <% end %>
+      </div>
     </div>
   <% end %>
-  <div class="card-footer cm">
-    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#maj_match">
-      Mettre à jour
-    </button>
-  </div>
 </div>
-<!-- Button trigger modal -->
 
 
 <!-- Modal -->
@@ -26,7 +23,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modifier les paramêtres du match</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modifier les paramètres du match</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

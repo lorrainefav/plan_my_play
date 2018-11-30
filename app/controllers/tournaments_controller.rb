@@ -9,7 +9,12 @@ class TournamentsController < ApplicationController
 
   def show
    @match = Match.new
+   if params[:date].present?
+    @date = DateTime.parse(params[:date])
+  else
+   @date = DateTime.now
   end
+end
 
   def new
     @tournament = Tournament.new

@@ -7,11 +7,11 @@
     <%= f.simple_fields_for :convocations, Convocation.new do |convocation| %>
       <%= convocation.input :registration_id, label: false, collection: @tournament.registrations, id: 'convocation2' %>
     <% end %>
-    <div class="form-inputs datepicker-match">
+<!--     <div class="form-inputs datepicker-match">
       <%= f.input :begin_at, label: "Date", input_html: { id:'match-time'}, as: :string %>
-    </div>
+    </div> -->
     <div class="form-actions">
-      <%= f.button :submit, "Créer", class: "btn btn-outline-secondary"  %>
+      <%= f.button :submit, "Créer", class: "btn btn-outline-secondary btn-block"  %>
     </div>
   <% end %>
 </div>

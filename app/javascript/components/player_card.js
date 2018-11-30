@@ -13,7 +13,7 @@ $('#player-cards').on('click', '.registration-card', function(e) {
   if (convocation0.value === "") {
     convocation0.value = $(this).data('id');
     searchCategory.value = $(this).data('category');
-    console.log($(this).data('gender'));
+    // console.log($(this).data('gender'));
     if ($(this).data('gender')==='men') {
       searchGenderMen.checked = true;
     }
