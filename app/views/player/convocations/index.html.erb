@@ -1,29 +1,26 @@
 <%= render 'shared/tabs' %>
 <div class="container py-5">
-    <div class="row">
+    <div class="row border-bottom border-dark">
       <% if @pending_convocations.any? %>
-        <h4 class="px-3">Convocations en attente de réponse</h4>
+        <h4 class="px-3 my-3">Convocations en attente de réponse</h4>
       <% else %>
-        <h4>Aucune convocation en attente de réponse</h4>
+        <h4 class="px-3 my-3">Aucune convocation en attente de réponse</h4>
       <% end %>
     </div>
-    <div class="row d-flex justify-content-around" id="pending-convocations">
-      <% @pending_convocations.each do |pending_convocation| %>
+    <div class="row d-flex justify-content-around mt-3" id="pending-convocations">
+      <% @pending_convocations.order(created_at: :desc).each do |pending_convocation| %>
         <%=  render "shared/card_convocation", convocation: pending_convocation %>
       <% end %>
     </div>
-    <div class="row">
-      <p class="px-3>****</p>
-    </div>
-    <div class="row">
+    <div class="row border-bottom border-dark">
       <% if @current_convocations.any? %>
-        <h4 class="px-3">Matchs à venir</h4>
+        <h4 class="px-3 my-3">Matchs à venir</h4>
       <% else %>
-        <h4 class="px-3">Aucun match prochainement</h4>
+        <h4 class="px-3 my-3">Aucun match prochainement</h4>
       <% end %>
     </div>
-    <div class="row d-flex justify-content-around" id="current-convocations">
-      <% @current_convocations.each do |current_convocation| %>
+    <div class="row d-flex justify-content-left mt-3" id="current-convocations">
+      <% @current_convocations.order(created_at: :desc).each do |current_convocation| %>
         <%=  render "shared/card_convocation", convocation: current_convocation %>
       <% end %>
     </div>

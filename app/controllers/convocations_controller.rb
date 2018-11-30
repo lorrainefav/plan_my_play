@@ -17,7 +17,7 @@ class ConvocationsController < ApplicationController
     @tournament = Tournament.find(params[:id])
     @tournament.send_convocations
     flash[:notice] = "Convocations envoyées !"
-    redirect_to registrations_path(@tournament)
+    redirect_to tournaments_path(@tournament)
   end
 
 private
