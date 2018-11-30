@@ -155,6 +155,8 @@ puts "Creating matches at 30/11"
     registration: Registration.all.sample,
     match: match,
     status: 'accepted'
+end
+
 3.times do
   match = Match.create(
     tournament: tournoi1,
@@ -172,6 +174,7 @@ puts "Creating matches at 30/11"
     status: 'accepted'
   )
 end
+
 3.times do
   match = Match.create(
     tournament: tournoi1,
@@ -189,6 +192,7 @@ end
     status: 'accepted'
   )
 end
+
 puts "Creating matches at 01/12"
 2.times do
   match = Match.create(
@@ -207,6 +211,7 @@ puts "Creating matches at 01/12"
     status: 'pending'
   )
 end
+
 2.times do
   match = Match.create(
     tournament: tournoi1,
