@@ -1,17 +1,18 @@
-<div class="card w-100 my-1" data-match-id="<%= match.id %>" id="card-<%= match.id %>" >
-  <div class="card-text"></div>
+<div class="card w-100 my-1 shadow-sm" style="background: #06AED3" data-match-id="<%= match.id %>" id="card-<%= match.id %>"  >
   <% match.convocations.each do |convocation| %>
-    <div class="card-body text-secondary" >
-      <div class="card-text d-flex justify-content-between">
-        <%= convocation.user.first_name %> <%= convocation.user.last_name %> (#<%= convocation.registration.category.first(3) %>)
+    <div class="card-body text-white" >
+      <div class="card-text d-flex justify-content-between" style="opacity: 1">
+        <div class="w-70" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bolder; color: white; ">
+          <%= convocation.user.first_name %> <%= convocation.user.last_name %> (#<%= convocation.registration.category.first(3) %>)
+        </div>
         <% if convocation.refused? %>
-          <i class="far fa-times-circle red-color pl-2"></i>
+          <i class="far fa-times-circle red-color pl-2 font-weight-bold"></i>
         <% elsif convocation.pending? %>
-          <i class="far fa-clock orange-color pl-2"></i>
+          <i class="far fa-clock orange-color pl-2 font-weight-bold"></i>
         <% elsif convocation.accepted?%>
-          <i class="far fa-check-circle green-color pl-2"></i>
+          <i class="far fa-check-circle green-color pl-2 font-weight-bold"></i>
         <% elsif convocation.to_be_sent?%>
-          <i class="far fa-envelope orange-color pl-2"></i>
+          <i class="far fa-envelope orange-color pl-2 font-weight-bold"></i>
         <% end %>
       </div>
     </div>
