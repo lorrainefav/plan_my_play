@@ -77,6 +77,21 @@ gauthier = User.create(
  ranking: "30/3",
  phone_number: "0698765432"
 )
+
+jules = User.create(
+  email: "jules@gmail.com",
+  password: "azerty",
+  password_confirmation: "azerty",
+  supervisor: false,
+  last_name: "Carrière",
+  first_name: "Jules",
+  club: "Toulouse TC",
+  licence: "9344054 A",
+  gender: "men",
+  ranking: "30/3",
+  phone_number: "0698763131"
+)
+
 puts "Creating player's inscription"
 inscription1 = Registration.create(
   user: gauthier,
@@ -95,14 +110,24 @@ inscription3 = Registration.create(
   tournament: tournoi4,
   category: "35"
 )
+inscription4 = Registration.create(
+  user: jules,
+  tournament: tournoi1,
+  category: "Senior"
+)
 
+puts "Matchs de Gauthier"
 match = Match.create(
     tournament: tournoi1,
-    begin_at: "27/11/2019 18:00"
+    begin_at: "29/11/2018 18:00"
     )
-
-Convocation.create(
+c1 = Convocation.create(
   registration: inscription1,
+  match: match,
+  status: 'accepted'
+  )
+c2 = Convocation.create(
+  registration: Registration.where(category: c1.registration.category).sample,
   match: match,
   status: 'accepted'
   )
@@ -138,92 +163,106 @@ end
 puts ""
 
 puts "Creating matches at 30/11"
+i = 0
 3.times do
+  i += 1
   match = Match.create(
     tournament: tournoi1,
-    begin_at: "30/11/2018 11:00"
+    begin_at: "30/11/2018 11:00",
+    court: i
     )
 
-  Convocation.create(
+  c1 = Convocation.create(
   registration: Registration.all.sample,
   match: match,
   status: 'accepted'
   )
-  Convocation.create(
-    registration: Registration.all.sample,
-    match: match,
-    status: 'accepted'
-    )
-end
-
-3.times do
-  match = Match.create(
-    tournament: tournoi1,
-    begin_at: "30/11/2018 15:00"
-    )
-
-  Convocation.create(
-  registration: Registration.all.sample,
-  match: match,
-  status: 'accepted'
-  )
-  Convocation.create(
-    registration: Registration.all.sample,
+  c2 = Convocation.create(
+    registration: Registration.where(category: c1.registration.category).sample,
     match: match,
     status: 'accepted'
   )
 end
 
+i = 0
 3.times do
+  i += 1
   match = Match.create(
     tournament: tournoi1,
-    begin_at: "30/11/2018 17:00"
+    begin_at: "30/11/2018 15:00",
+    court: i
     )
 
-  Convocation.create(
+  c1 = Convocation.create(
   registration: Registration.all.sample,
   match: match,
   status: 'accepted'
   )
-  Convocation.create(
-    registration: Registration.all.sample,
+  c2 = Convocation.create(
+    registration: Registration.where(category: c1.registration.category).sample,
+    match: match,
+    status: 'accepted'
+  )
+end
+
+i = 0
+3.times do
+  i += 1
+  match = Match.create(
+    tournament: tournoi1,
+    begin_at: "30/11/2018 17:00",
+    court: i
+    )
+
+  c1 = Convocation.create(
+  registration: Registration.all.sample,
+  match: match,
+  status: 'accepted'
+  )
+  c2 = Convocation.create(
+    registration: Registration.where(category: c1.registration.category).sample,
     match: match,
     status: 'accepted'
   )
 end
 
 puts "Creating matches at 01/12"
+i = 0
 2.times do
+  i += 1
   match = Match.create(
     tournament: tournoi1,
-    begin_at: "01/12/2018 18:00"
+    begin_at: "01/12/2018 10:00",
+    court: i
     )
 
-  Convocation.create(
+  c1 = Convocation.create(
   registration: Registration.all.sample,
   match: match,
   status: 'pending'
   )
-  Convocation.create(
-    registration: Registration.all.sample,
+  c2 = Convocation.create(
+    registration: Registration.where(category: c1.registration.category).sample,
     match: match,
     status: 'pending'
   )
 end
 
+i = 0
 2.times do
+  i += 1
   match = Match.create(
     tournament: tournoi1,
-    begin_at: "01/12/2018 16:00"
+    begin_at: "01/12/2018 12:00"
     )
 
-  Convocation.create(
+  c1 = Convocation.create(
   registration: Registration.all.sample,
   match: match,
   status: 'refused'
   )
-  Convocation.create(
-    registration: Registration.all.sample,
+  c2 = Convocation.create(
+    registration: Registration.where(category: c1.registration.category).sample,
     match: match,
     status: 'pending'
   )
