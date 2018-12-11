@@ -7,9 +7,12 @@ class Tournament < ApplicationRecord
 
   validates :name, presence: true
   validates :city, presence: true
-  validates :courts_number, numericality: { only_integer: true }
+  validates :courts_number, numericality: { only_integer: true, greater_than: 0 }
+  validates :match_duration, numericality: { only_integer: true }
   validates :begin_at, presence: true
   validates :end_at, presence: true
+
+  mount_uploader :photo, PhotoUploader
 
   def send_convocations
     self.convocations.each do |convocation|

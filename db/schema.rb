@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_29_130157) do
+ActiveRecord::Schema.define(version: 2018_12_11_170025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,10 @@ ActiveRecord::Schema.define(version: 2018_11_29_130157) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "registration_ranking"
+    t.string "ranking"
+    t.string "phone_number"
+    t.string "gender"
+    t.string "club"
     t.index ["tournament_id"], name: "index_registrations_on_tournament_id"
     t.index ["user_id"], name: "index_registrations_on_user_id"
   end
@@ -64,7 +68,7 @@ ActiveRecord::Schema.define(version: 2018_11_29_130157) do
     t.integer "match_duration", default: 90
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo_url"
+    t.string "photo"
     t.index ["supervisor_id"], name: "index_tournaments_on_supervisor_id"
   end
 
@@ -79,11 +83,7 @@ ActiveRecord::Schema.define(version: 2018_11_29_130157) do
     t.boolean "supervisor"
     t.string "last_name"
     t.string "first_name"
-    t.string "club"
     t.string "licence"
-    t.string "gender"
-    t.string "ranking"
-    t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

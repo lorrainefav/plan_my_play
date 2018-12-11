@@ -1,6 +1,6 @@
 <div class="col-xs-12 col-sm-4">
   <div class="card mb-2" style="width: 18rem; align-items: center;">
-    <%= image_tag tournament.photo_url, id: "logo", width:250, height: 250 %>
+    <%= cl_image_tag tournament.photo, id: "logo", width:250, height: 250 %>
     <div class="card-body">
       <h5 class="card-title"><%= tournament.name %></h5>
       <p class="card-text"><%= tournament.city %></p>

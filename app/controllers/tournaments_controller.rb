@@ -56,6 +56,6 @@ end
   end
 
   def tournament_params
-    params.require(:tournament).permit([:name, :city, :courts_number, :begin_at, :end_at, :user])
+    params.require(:tournament).permit([:name, :city, :courts_number, :match_duration, :begin_at, :end_at, :user, :photo, :file])
   end
 end
